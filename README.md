@@ -36,3 +36,5 @@ See [example/App.js](example/App.js)
 
 ## License
 - [MIT](LICENSE)
+
+[![NPM](https://nodei.co/npm/react-native-material-dialog.png)](https://npmjs.org/package/react-native-material-dialog)
