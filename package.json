@@ -1,6 +1,6 @@
 {
   "name": "react-native-material-dialog",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Material design compliant dialog for React Native",
   "main": "MaterialDialog.js",
   "scripts": {
