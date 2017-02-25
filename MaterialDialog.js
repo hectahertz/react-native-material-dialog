@@ -44,14 +44,14 @@ export default class MaterialDialog extends Component {
                 <View>
                   {this.props.title != null
                     ? <View
-                      style={this.props.scrolled
-                      ? styles.titleContainerScrolled
-                      : styles.titleContainer}>
-                      <Text
-                        style={[styles.titleText, { color: this.props.titleColor }]}>
-                        {this.props.title}
-                      </Text>
-                    </View>
+                        style={this.props.scrolled
+                        ? styles.titleContainerScrolled
+                        : styles.titleContainer}>
+                        <Text
+                          style={[styles.titleText, { color: this.props.titleColor }]}>
+                          {this.props.title}
+                        </Text>
+                      </View>
                     : null}
                   <View
                     style={this.props.scrolled
@@ -61,18 +61,18 @@ export default class MaterialDialog extends Component {
                   </View>
                   {this.props.onOk != null && this.props.onCancel != null
                     ? <View
-                      style={this.props.scrolled
-                      ? styles.actionsContainerScrolled
-                      : styles.actionsContainer}>
-                      <ActionButton
-                        colorAccent={this.props.colorAccent}
-                        onPress={this.props.onCancel}
-                        label={this.props.cancelLabel} />
-                      <ActionButton
-                        colorAccent={this.props.colorAccent}
-                        onPress={this.props.onOk}
-                        label={this.props.okLabel} />
-                    </View>
+                        style={this.props.scrolled
+                        ? styles.actionsContainerScrolled
+                        : styles.actionsContainer}>
+                        <ActionButton
+                          colorAccent={this.props.colorAccent}
+                          onPress={this.props.onCancel}
+                          label={this.props.cancelLabel} />
+                        <ActionButton
+                          colorAccent={this.props.colorAccent}
+                          onPress={this.props.onOk}
+                          label={this.props.okLabel} />
+                      </View>
                     : null}
                 </View>
               </TouchableWithoutFeedback>
@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
   modalContainer: {
     marginHorizontal: 16,
     marginVertical: 56,
+    paddingTop: 24,
     minWidth: 280,
     borderRadius: 2,
     backgroundColor: colors.background,
@@ -102,16 +103,14 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     paddingHorizontal: 24,
-    paddingTop: 4,
-    height: 56,
+    paddingBottom: 20,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
   titleContainerScrolled: {
     paddingHorizontal: 24,
-    paddingTop: 4,
-    height: 56,
+    paddingBottom: 20,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
