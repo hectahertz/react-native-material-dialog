@@ -1,0 +1,29 @@
+{
+  "name": "react-native-material-dialog",
+  "version": "0.0.3",
+  "description": "Material design compliant dialog for React Native",
+  "main": "MaterialDialog.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hectahertz/react-native-material-dialog.git"
+  },
+  "keywords": [
+    "react-native",
+    "react",
+    "material",
+    "material-design",
+    "dialog",
+    "pop-up",
+    "popup",
+    "modal"
+  ],
+  "author": "hectahertz <hectahertz@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hectahertz/react-native-material-dialog/issues"
+  },
+  "homepage": "https://github.com/hectahertz/react-native-material-dialog#readme"
+}
