@@ -14,14 +14,14 @@ Javascript-only, uses react-native's Modal component. Follows the [Material Desi
 ```jsx
 <MaterialDialog
   title={"Use Google's Location Service?"}
-  visible={this.state.basicOkCancelVisible}
+  visible={this.state.visible}
   onOk={() => {
   ToastAndroid.show("Pressed OK", ToastAndroid.SHORT);
-  this.setState({basicOkCancelVisible: false})
+  this.setState({visible: false})
 }}
   onCancel={() => {
   ToastAndroid.show("Pressed CANCEL", ToastAndroid.SHORT);
-  this.setState({basicOkCancelVisible: false})
+  this.setState({visible: false})
 }}>
   <Text style={styles.dialogText}>
     Let Google help apps determine location. This means sending anonymous location
@@ -33,6 +33,19 @@ Javascript-only, uses react-native's Modal component. Follows the [Material Desi
 ## More examples
 See [example/App.js](example/App.js)
 
+## Props
+ Name | Description | Default/Required | Type
+------|-------------|----------|-----------
+visible | shows or hides the dialog | required | bool
+children | element to be rendered in the content of the dialog | required | element
+onCancel | callback when the dialog is closed or the cancel action is pressed | required | func
+onOk | callback when the ok action is pressed | undefined | func
+cancelLabel | label for the cancel action | 'CANCEL' | string
+okLabel | label for the ok action | 'OK' | string
+title | text for the dialog title | undefined | string
+titleColor | color of the dialog title | 'rgba(0, 0, 0, 0.87)' | string
+colorAccent | color of the action text | '#51BC78' | string
+scrolled | whether the form is in scrolled mode | false | bool
 
 ## License
 - [MIT](LICENSE)
