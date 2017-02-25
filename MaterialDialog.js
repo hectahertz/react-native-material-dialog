@@ -163,16 +163,16 @@ const styles = StyleSheet.create({
 
 MaterialDialog.propTypes = {
   visible: PropTypes.bool.isRequired,
-  scrolled: PropTypes.bool,
-  onOk: PropTypes.func.isRequired,
+  children: PropTypes.element.isRequired,
   onCancel: PropTypes.func.isRequired,
-  okLabel: PropTypes.string,
+  onOk: PropTypes.func,
   cancelLabel: PropTypes.string,
-  title: PropTypes.string.isRequired,
+  okLabel: PropTypes.string,
+  title: PropTypes.string,
   titleColor: PropTypes.string,
   colorAccent: PropTypes.string,
-  children: PropTypes.element.isRequired,
-};
+  scrolled: PropTypes.bool,
+}
 
 MaterialDialog.defaultProps = {
   titleColor: colors.androidPrimaryTextColor,
