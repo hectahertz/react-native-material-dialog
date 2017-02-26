@@ -1,4 +1,9 @@
 # react-native-material-dialog
+[![npm](https://img.shields.io/npm/dm/localeval.svg)](https://github.com/hectahertz/react-native-material-dialog)
+[![npm](https://img.shields.io/npm/dt/express.svg)](https://github.com/hectahertz/react-native-material-dialog)
+[![npm](https://img.shields.io/npm/v/npm.svg)](https://npmjs.org/package/react-native-material-dialog)
+[![npm](https://img.shields.io/npm/l/react-native-smart-badge.svg)](https://github.com/hectahertz/react-native-material-dialog/blob/master/LICENSE)
+
 Material design compliant dialog for React Native
 
 ![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/3.png)
