@@ -8,6 +8,18 @@ Javascript-only, uses react-native's Modal component. Follows the [Material Desi
 
 ## Installation
 
+#### Step 1
+
+Install react-native-vector-icons (if you do not already have it)
+
+`npm i react-native-vector-icons --save && react-native link react-native-vector-icons`
+
+*If you have any issues with icons not working or installation of React Native Vector Icons, check out their installation guide [here](https://github.com/oblador/react-native-vector-icons#installation)*
+
+#### Step 2
+
+Install react-native-material-dialog
+
 `npm install react-native-material-dialog --save`
 
 ## How to use
