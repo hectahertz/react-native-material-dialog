@@ -1,8 +1,8 @@
 # react-native-material-dialog
 Material design compliant dialog for React Native
 
-![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/3.png)
-![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/6.png)
+![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/dialog.gif)
+![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/multipicker.gif)
 
 Javascript-only, uses react-native's Modal component. Follows the [Material Design dialog specification](https://material.io/guidelines/components/dialogs.html), and accepts any View as the content.
 
