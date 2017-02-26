@@ -2,7 +2,7 @@
   "name": "react-native-material-dialog",
   "version": "0.0.5",
   "description": "Material design compliant dialog for React Native",
-  "main": "MaterialDialog.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,6 +20,9 @@
     "popup",
     "modal"
   ],
+  "dependencies": {
+    "react-native-vector-icons": "^4.0.0"
+  },
   "author": "hectahertz <hectahertz@gmail.com>",
   "license": "MIT",
   "bugs": {
