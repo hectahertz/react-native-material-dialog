@@ -23,6 +23,14 @@
   "dependencies": {
     "react-native-vector-icons": "^4.0.0"
   },
+  "devDependencies": {
+    "eslint": "^3.16.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0",
+    "eslint-plugin-react-native": "^2.2.1"
+  },
   "author": "hectahertz <hectahertz@gmail.com>",
   "license": "MIT",
   "bugs": {
