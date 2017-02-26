@@ -1,10 +1,12 @@
 # react-native-material-dialog
 Material design compliant dialog for React Native
 
-![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/dialog.gif)
-![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/multipicker.gif)
+![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/3.png)
+![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/7.png)
 
-Javascript-only, uses react-native's Modal component. Follows the [Material Design dialog specification](https://material.io/guidelines/components/dialogs.html), and accepts any View as the content.
+Javascript-only, uses react-native's Modal component.
+
+Follows the [Material Design dialog specification](https://material.io/guidelines/components/dialogs.html).
 
 ## Installation
 
@@ -22,8 +24,25 @@ Install react-native-material-dialog
 
 `npm install react-native-material-dialog --save`
 
-## How to use
+## Included
+- [x] [MaterialDialog](https://github.com/hectahertz/react-native-material-dialog#MaterialDialog)
+- [x] [MultiPickerMaterialDialog](https://github.com/hectahertz/react-native-material-dialog#MultiPickerMaterialDialog)
+
+## Roadmap
+
+## More examples
+See [example/App.js](example/App.js)
+
+
+## MaterialDialog
+
+Basic and customizable dialog that can hold any component.
+
+![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/dialog.gif)
+
 ```jsx
+import { MaterialDialog } from 'react-native-material-dialog';
+
 <MaterialDialog
   title={"Use Google's Location Service?"}
   visible={this.state.visible}
@@ -42,9 +61,6 @@ Install react-native-material-dialog
 </MaterialDialog>
 ```
 
-## More examples
-See [example/App.js](example/App.js)
-
 ## Props
  Name | Description | Default/Required | Type
 ------|-------------|----------|-----------
@@ -58,6 +74,44 @@ title | text for the dialog title | undefined | string
 titleColor | color of the dialog title | 'rgba(0, 0, 0, 0.87)' | string
 colorAccent | color of the action text | '#51BC78' | string
 scrolled | whether the form is in scrolled mode | false | bool
+
+## MultiPickerMaterialDialog
+
+Ready to use dialog that allows to choose several options from a list.
+
+![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/multipicker.gif)
+
+```jsx
+import { MultiPickerMaterialDialog } from 'react-native-material-dialog';
+
+<MultiPickerMaterialDialog
+  title={"Pick some elements!"}
+  colorAccent={this.props.colorAccent}
+  items={LIST.map((row, index) => {
+    return {value: index, label: row}
+  })}
+  visible={this.state.multiPickerVisible}
+  selectedItems={this.state.multiPickerSelectedItems}
+  onCancel={() => this.setState({multiPickerVisible: false})}
+  onOk={(result) => {
+    this.setState({multiPickerVisible: false});
+    this.setState({multiPickerSelectedItems: result.selectedItems});
+  }}/>
+```
+
+## Props
+ Name | Description | Default/Required | Type
+------|-------------|----------|-----------
+visible | shows or hides the dialog | required | bool
+items | list of options to choose from | required | array of objects with a 'label' and 'value' property
+selectedItems | items that will be selected when opening the dialog | required | array of objects with a 'label' and 'value' property
+onCancel | callback when the dialog is closed or the cancel action is pressed | required | func
+onOk | callback when the ok action is pressed | undefined | func
+cancelLabel | label for the cancel action | 'CANCEL' | string
+okLabel | label for the ok action | 'OK' | string
+title | text for the dialog title | undefined | string
+titleColor | color of the dialog title | 'rgba(0, 0, 0, 0.87)' | string
+colorAccent | color of the action text | '#51BC78' | string
 
 ## License
 - [MIT](LICENSE)
