@@ -34,6 +34,7 @@ Install react-native-material-dialog
 - [x] [MultiPickerMaterialDialog](https://github.com/hectahertz/react-native-material-dialog#MultiPickerMaterialDialog)
 
 ## Roadmap
+- [ ] Simple dialog component that accepts a string as content and styles it.
 
 ## More examples
 See [example/App.js](example/App.js)
