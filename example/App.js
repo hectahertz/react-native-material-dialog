@@ -9,7 +9,7 @@ import {
   ToastAndroid,
   ScrollView,
 } from 'react-native';
-import { MaterialDialog, MultiPickerMaterialDialog } from 'react-native-material-dialog';
+import { MaterialDialog, MultiPickerMaterialDialog, SinglePickerMaterialDialog } from 'react-native-material-dialog';
 
 export default class MaterialDialogExample extends Component {
 
@@ -24,6 +24,10 @@ export default class MaterialDialogExample extends Component {
     multiPickerSelectedItems: [],
     scrolledMultiPickerVisible: false,
     scrolledMultiPickerSelectedItems: [],
+    singlePickerVisible: false,
+    singlePickerSelectedItem: undefined,
+    scrolledSinglePickerVisible: false,
+    scrolledSinglePickerSelectedItem: undefined,
   }
 
   // TODO Add examples with more complex views
@@ -130,6 +134,37 @@ export default class MaterialDialogExample extends Component {
                     .scrolledMultiPickerSelectedItems
                     .map(item => item.label)
                     .join(', ')}
+              </Text>
+            </View>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.titleText}>
+                SinglePickerMaterialDialog
+              </Text>
+              <TouchableNativeFeedback
+                onPress={() => this.setState({ singlePickerVisible: true })}>
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>
+                    SINGLE PICKER
+                  </Text>
+                </View>
+              </TouchableNativeFeedback>
+              <Text numberOfLines={1} style={styles.viewText}>
+                {this.state.singlePickerSelectedItem === undefined
+                  ? 'No item selected.'
+                  : 'Selected: ' + this.state.singlePickerSelectedItem.label}
+              </Text>
+              <TouchableNativeFeedback
+                onPress={() => this.setState({ scrolledSinglePickerVisible: true })}>
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>
+                    SCROLLED SINGLE PICKER
+                  </Text>
+                </View>
+              </TouchableNativeFeedback>
+              <Text numberOfLines={1} style={styles.viewText}>
+                {this.state.scrolledSinglePickerSelectedItem === undefined
+                  ? 'No item selected.'
+                  : 'Selected: ' + this.state.scrolledSinglePickerSelectedItem.label}
               </Text>
             </View>
           </View>
@@ -262,6 +297,29 @@ export default class MaterialDialogExample extends Component {
             this.setState({ scrolledMultiPickerVisible: false });
             this.setState({ scrolledMultiPickerSelectedItems: result.selectedItems });
           }} />
+
+        <SinglePickerMaterialDialog
+          title={'Pick one element!'}
+          items={SHORT_LIST.map((row, index) => ({ value: index, label: row }))}
+          visible={this.state.singlePickerVisible}
+          selectedItem={this.state.singlePickerSelectedItem}
+          onCancel={() => this.setState({ singlePickerVisible: false })}
+          onOk={(result) => {
+            this.setState({ singlePickerVisible: false });
+            this.setState({ singlePickerSelectedItem: result.selectedItem });
+          }} />
+
+        <SinglePickerMaterialDialog
+          title={'Pick one element!'}
+          scrolled
+          items={LONG_LIST.map((row, index) => ({ value: index, label: row }))}
+          visible={this.state.scrolledSinglePickerVisible}
+          selectedItem={this.state.scrolledSinglePickerSelectedItem}
+          onCancel={() => this.setState({ scrolledSinglePickerVisible: false })}
+          onOk={(result) => {
+            this.setState({ scrolledSinglePickerVisible: false });
+            this.setState({ scrolledSinglePickerSelectedItem: result.selectedItem });
+          }} />
       </View>
     );
   }
@@ -307,7 +365,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   sectionContainer: {
-    paddingVertical: 16,
+    paddingVertical: 8,
   },
   navigationBar: {
     height: 56,
