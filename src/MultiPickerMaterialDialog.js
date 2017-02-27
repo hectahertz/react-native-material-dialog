@@ -73,13 +73,13 @@ export default class MultiPickerMaterialDialog extends Component {
         colorAccent={this.props.colorAccent}
         visible={this.props.visible}
         okLabel={this.props.okLabel}
+        scrolled={this.props.scrolled}
         onOk={() => this.props.onOk({
           selectedItems: this
           .state
           .rows
           .filter(row => row.selected),
         })}
-        scrolled
         cancelLabel={this.props.cancelLabel}
         onCancel={() => {
           this
@@ -131,6 +131,7 @@ MultiPickerMaterialDialog.propTypes = {
   onOk: PropTypes.func.isRequired,
   cancelLabel: PropTypes.string,
   okLabel: PropTypes.string,
+  scrolled: PropTypes.bool,
 };
 
 MultiPickerMaterialDialog.defaultProps = {
@@ -139,4 +140,5 @@ MultiPickerMaterialDialog.defaultProps = {
   colorAccent: colors.androidColorAccent,
   cancelLabel: undefined,
   okLabel: undefined,
+  scrolled: false,
 };

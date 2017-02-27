@@ -22,97 +22,118 @@ export default class MaterialDialogExample extends Component {
     basicScrolledListVisible: false,
     multiPickerVisible: false,
     multiPickerSelectedItems: [],
+    scrolledMultiPickerVisible: false,
+    scrolledMultiPickerSelectedItems: [],
   }
 
   // TODO Add examples with more complex views
-  
+
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar backgroundColor="#303f9f"  />
+        <StatusBar backgroundColor="#303f9f" />
         <View style={styles.navigationBar}>
           <Text style={styles.navigationBarNameText}>
             react-native-material-dialog examples
           </Text>
         </View>
-        <View style={styles.contentContainer}>
-          <View style={styles.sectionContainer}>
-            <Text style={styles.titleText}>
-              MaterialDialog
-            </Text>
-            <TouchableNativeFeedback
-              onPress={() => this.setState({ basicNoActionsVisible: true })}>
-              <View style={styles.button}>
-                <Text style={styles.buttonText}>
-                  TITLE & NO ACTIONS
-                </Text>
-              </View>
-            </TouchableNativeFeedback>
-            <TouchableNativeFeedback
-              onPress={() => this.setState({ basicNoTitleVisible: true })}>
-              <View style={styles.button}>
-                <Text style={styles.buttonText}>
-                  NO TITLE & OK/CANCEL
-                </Text>
-              </View>
-            </TouchableNativeFeedback>
-            <TouchableNativeFeedback
-              onPress={() => this.setState({ basicOkCancelVisible: true })}>
-              <View style={styles.button}>
-                <Text style={styles.buttonText}>
-                  TITLE & OK/CANCEL
-                </Text>
-              </View>
-            </TouchableNativeFeedback>
-            <TouchableNativeFeedback
-              onPress={() => this.setState({ basicCustomLabelsVisible: true })}>
-              <View style={styles.button}>
-                <Text style={styles.buttonText}>
-                  NO TITLE & CUSTOM LABELS
-                </Text>
-              </View>
-            </TouchableNativeFeedback>
-            <TouchableNativeFeedback
-              onPress={() => this.setState({ basicCustomColorsVisible: true })}>
-              <View style={styles.button}>
-                <Text style={styles.buttonText}>
-                  CUSTOM COLORS
-                </Text>
-              </View>
-            </TouchableNativeFeedback>
-            <TouchableNativeFeedback
-              onPress={() => this.setState({ basicScrolledListVisible: true })}>
-              <View style={styles.button}>
-                <Text style={styles.buttonText}>
-                  SCROLLED WITH A CUSTOM LIST
-                </Text>
-              </View>
-            </TouchableNativeFeedback>
-          </View>
+        <ScrollView>
+          <View style={styles.contentContainer}>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.titleText}>
+                MaterialDialog
+              </Text>
+              <TouchableNativeFeedback
+                onPress={() => this.setState({ basicNoActionsVisible: true })}>
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>
+                    TITLE & NO ACTIONS
+                  </Text>
+                </View>
+              </TouchableNativeFeedback>
+              <TouchableNativeFeedback
+                onPress={() => this.setState({ basicNoTitleVisible: true })}>
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>
+                    NO TITLE & OK/CANCEL
+                  </Text>
+                </View>
+              </TouchableNativeFeedback>
+              <TouchableNativeFeedback
+                onPress={() => this.setState({ basicOkCancelVisible: true })}>
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>
+                    TITLE & OK/CANCEL
+                  </Text>
+                </View>
+              </TouchableNativeFeedback>
+              <TouchableNativeFeedback
+                onPress={() => this.setState({ basicCustomLabelsVisible: true })}>
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>
+                    NO TITLE & CUSTOM LABELS
+                  </Text>
+                </View>
+              </TouchableNativeFeedback>
+              <TouchableNativeFeedback
+                onPress={() => this.setState({ basicCustomColorsVisible: true })}>
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>
+                    CUSTOM COLORS
+                  </Text>
+                </View>
+              </TouchableNativeFeedback>
+              <TouchableNativeFeedback
+                onPress={() => this.setState({ basicScrolledListVisible: true })}>
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>
+                    SCROLLED WITH A CUSTOM LIST
+                  </Text>
+                </View>
+              </TouchableNativeFeedback>
+            </View>
 
-          <View style={styles.sectionContainer}>
-            <Text style={styles.titleText}>
-              MultiPickerMaterialDialog
-            </Text>
-            <TouchableNativeFeedback
-              onPress={() => this.setState({ multiPickerVisible: true })}>
-              <View style={styles.button}>
-                <Text style={styles.buttonText}>
-                  MULTI PICKER
-                </Text>
-              </View>
-            </TouchableNativeFeedback>
-            <Text numberOfLines={1} style={styles.viewText}>
-              {this.state.multiPickerSelectedItems.length === 0
-                ? 'No items selected.'
-                : 'Selected: ' + this
-                  .state
-                  .multiPickerSelectedItems
-                  .map(item => item.label)
-                  .join(', ')}
-            </Text>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.titleText}>
+                MultiPickerMaterialDialog
+              </Text>
+              <TouchableNativeFeedback
+                onPress={() => this.setState({ multiPickerVisible: true })}>
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>
+                    MULTI PICKER
+                  </Text>
+                </View>
+              </TouchableNativeFeedback>
+              <Text numberOfLines={1} style={styles.viewText}>
+                {this.state.multiPickerSelectedItems.length === 0
+                  ? 'No items selected.'
+                  : 'Selected: ' + this
+                    .state
+                    .multiPickerSelectedItems
+                    .map(item => item.label)
+                    .join(', ')}
+              </Text>
+              <TouchableNativeFeedback
+                onPress={() => this.setState({ scrolledMultiPickerVisible: true })}>
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>
+                    SCROLLED MULTI PICKER
+                  </Text>
+                </View>
+              </TouchableNativeFeedback>
+              <Text numberOfLines={1} style={styles.viewText}>
+                {this.state.scrolledMultiPickerSelectedItems.length === 0
+                  ? 'No items selected.'
+                  : 'Selected: ' + this
+                    .state
+                    .scrolledMultiPickerSelectedItems
+                    .map(item => item.label)
+                    .join(', ')}
+              </Text>
+            </View>
           </View>
-        </View>
+        </ScrollView>
 
         <MaterialDialog
           title={'Information'}
@@ -194,6 +215,7 @@ export default class MaterialDialogExample extends Component {
             Store the conversation log in Google Drive.
           </Text>
         </MaterialDialog>
+
         <MaterialDialog
           visible={this.state.basicScrolledListVisible}
           title={'Scrollable list'}
@@ -208,7 +230,7 @@ export default class MaterialDialogExample extends Component {
           }}>
           <ScrollView
             contentContainerStyle={styles.scrollViewContainer}>
-            {LIST.map((row) => (
+            {LONG_LIST.map((row) => (
               <TouchableNativeFeedback key={row}>
                 <View style={styles.row}>
                   <Text style={styles.dialogText}>{row}</Text>
@@ -220,7 +242,7 @@ export default class MaterialDialogExample extends Component {
 
         <MultiPickerMaterialDialog
           title={'Pick some elements!'}
-          items={LIST.map((row, index) => ({ value: index, label: row }))}
+          items={SHORT_LIST.map((row, index) => ({ value: index, label: row }))}
           visible={this.state.multiPickerVisible}
           selectedItems={this.state.multiPickerSelectedItems}
           onCancel={() => this.setState({ multiPickerVisible: false })}
@@ -228,12 +250,24 @@ export default class MaterialDialogExample extends Component {
             this.setState({ multiPickerVisible: false });
             this.setState({ multiPickerSelectedItems: result.selectedItems });
           }} />
+
+        <MultiPickerMaterialDialog
+          title={'Pick some more elements!'}
+          scrolled
+          items={LONG_LIST.map((row, index) => ({ value: index, label: row }))}
+          visible={this.state.scrolledMultiPickerVisible}
+          selectedItems={this.state.scrolledMultiPickerSelectedItems}
+          onCancel={() => this.setState({ scrolledMultiPickerVisible: false })}
+          onOk={(result) => {
+            this.setState({ scrolledMultiPickerVisible: false });
+            this.setState({ scrolledMultiPickerSelectedItems: result.selectedItems });
+          }} />
       </View>
     );
   }
 }
 
-const LIST = [
+const LONG_LIST = [
   'List element 1',
   'List element 2',
   'List element 3',
@@ -252,6 +286,12 @@ const LIST = [
   'List element 17',
   'List element 18',
   'List element 19',
+];
+
+const SHORT_LIST = [
+  'List element 1',
+  'List element 2',
+  'List element 3',
 ];
 
 const styles = StyleSheet.create({
