@@ -1,4 +1,3 @@
-
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, ListView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
