@@ -47,6 +47,7 @@ export default class MaterialDialogExample extends Component {
               <Text style={styles.titleText}>
                 MaterialDialog
               </Text>
+
               <TouchableNativeFeedback
                 onPress={() => this.setState({ basicNoActionsVisible: true })}>
                 <View style={styles.button}>
@@ -55,6 +56,7 @@ export default class MaterialDialogExample extends Component {
                   </Text>
                 </View>
               </TouchableNativeFeedback>
+
               <TouchableNativeFeedback
                 onPress={() => this.setState({ basicNoTitleVisible: true })}>
                 <View style={styles.button}>
@@ -63,6 +65,7 @@ export default class MaterialDialogExample extends Component {
                   </Text>
                 </View>
               </TouchableNativeFeedback>
+
               <TouchableNativeFeedback
                 onPress={() => this.setState({ basicOkCancelVisible: true })}>
                 <View style={styles.button}>
@@ -71,6 +74,7 @@ export default class MaterialDialogExample extends Component {
                   </Text>
                 </View>
               </TouchableNativeFeedback>
+
               <TouchableNativeFeedback
                 onPress={() => this.setState({ basicCustomLabelsVisible: true })}>
                 <View style={styles.button}>
@@ -79,6 +83,7 @@ export default class MaterialDialogExample extends Component {
                   </Text>
                 </View>
               </TouchableNativeFeedback>
+
               <TouchableNativeFeedback
                 onPress={() => this.setState({ basicCustomColorsVisible: true })}>
                 <View style={styles.button}>
@@ -87,6 +92,7 @@ export default class MaterialDialogExample extends Component {
                   </Text>
                 </View>
               </TouchableNativeFeedback>
+
               <TouchableNativeFeedback
                 onPress={() => this.setState({ basicScrolledListVisible: true })}>
                 <View style={styles.button}>
@@ -101,6 +107,7 @@ export default class MaterialDialogExample extends Component {
               <Text style={styles.titleText}>
                 MultiPickerMaterialDialog
               </Text>
+              
               <TouchableNativeFeedback
                 onPress={() => this.setState({ multiPickerVisible: true })}>
                 <View style={styles.button}>
@@ -118,6 +125,7 @@ export default class MaterialDialogExample extends Component {
                     .map(item => item.label)
                     .join(', ')}
               </Text>
+
               <TouchableNativeFeedback
                 onPress={() => this.setState({ scrolledMultiPickerVisible: true })}>
                 <View style={styles.button}>
@@ -140,6 +148,7 @@ export default class MaterialDialogExample extends Component {
               <Text style={styles.titleText}>
                 SinglePickerMaterialDialog
               </Text>
+
               <TouchableNativeFeedback
                 onPress={() => this.setState({ singlePickerVisible: true })}>
                 <View style={styles.button}>
@@ -153,6 +162,7 @@ export default class MaterialDialogExample extends Component {
                   ? 'No item selected.'
                   : 'Selected: ' + this.state.singlePickerSelectedItem.label}
               </Text>
+              
               <TouchableNativeFeedback
                 onPress={() => this.setState({ scrolledSinglePickerVisible: true })}>
                 <View style={styles.button}>
