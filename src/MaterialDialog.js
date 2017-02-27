@@ -87,14 +87,14 @@ export default class MaterialDialog extends Component {
 const styles = StyleSheet.create({
   backgroundOverlay: {
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.backgroundOverlay,
   },
   modalContainer: {
     marginHorizontal: 16,
-    marginVertical: 56,
+    marginVertical: 106,
     paddingTop: 24,
     minWidth: 280,
     borderRadius: 2,
