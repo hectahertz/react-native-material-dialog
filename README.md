@@ -4,7 +4,9 @@
 [![npm](https://img.shields.io/npm/v/npm.svg)](https://npmjs.org/package/react-native-material-dialog)
 [![npm](https://img.shields.io/npm/l/react-native-smart-badge.svg)](https://github.com/hectahertz/react-native-material-dialog/blob/master/LICENSE)
 
-Material design compliant dialog for React Native
+Material design compliant dialog components for React Native.
+
+Includes an generic dialog that can contain any view and several pre-styled scenarios.
 
 ![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/3.png)
 ![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/7.png)
@@ -29,16 +31,18 @@ Install react-native-material-dialog
 
 `npm install react-native-material-dialog --save`
 
-## Included
-- [x] [MaterialDialog](https://github.com/hectahertz/react-native-material-dialog#MaterialDialog)
-- [x] [MultiPickerMaterialDialog](https://github.com/hectahertz/react-native-material-dialog#MultiPickerMaterialDialog)
+## Included components
+- [x] [MaterialDialog](https://github.com/hectahertz/react-native-material-dialog#materialdialog)
+- [x] [SinglePickerMaterialDialog](https://github.com/hectahertz/react-native-material-dialog#singlepickermaterialdialog)
+- [x] [MultiPickerMaterialDialog](https://github.com/hectahertz/react-native-material-dialog#multipickermaterialdialog)
 
 ## Roadmap
+- [ ] Support for stacked action buttons.
+- [ ] Dialog that holds a slider.
 - [ ] Simple dialog component that accepts a string as content and styles it.
 
 ## More examples
 See [example/App.js](example/App.js)
-
 
 ## MaterialDialog
 
@@ -72,6 +76,42 @@ import { MaterialDialog } from 'react-native-material-dialog';
 ------|-------------|----------|-----------
 visible | shows or hides the dialog | required | bool
 children | element to be rendered in the content of the dialog | required | element
+onCancel | callback when the dialog is closed or the cancel action is pressed | required | func
+onOk | callback when the ok action is pressed | undefined | func
+cancelLabel | label for the cancel action | 'CANCEL' | string
+okLabel | label for the ok action | 'OK' | string
+title | text for the dialog title | undefined | string
+titleColor | color of the dialog title | 'rgba(0, 0, 0, 0.87)' | string
+colorAccent | color of the action text | '#51BC78' | string
+scrolled | whether the form is in scrolled mode | false | bool
+
+## SinglePickerMaterialDialog
+
+Ready to use dialog that allows to choose only one option from a list.
+
+![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/singlepicker.gif)
+
+```jsx
+import { SinglePickerMaterialDialog } from 'react-native-material-dialog';
+
+<SinglePickerMaterialDialog
+  title={'Pick one element!'}
+  items={LIST.map((row, index) => ({ value: index, label: row }))}
+  visible={this.state.singlePickerVisible}
+  selectedItem={this.state.singlePickerSelectedItem}
+  onCancel={() => this.setState({ singlePickerVisible: false })}
+  onOk={(result) => {
+    this.setState({ singlePickerVisible: false });
+    this.setState({ singlePickerSelectedItem: result.selectedItem });
+  }} />
+```
+
+## Props
+ Name | Description | Default/Required | Type
+------|-------------|----------|-----------
+visible | shows or hides the dialog | required | bool
+items | list of options to choose from | required | array of objects with a 'label' and 'value' property
+selectedItem | item that will be selected when opening the dialog | required | object with a 'label' and 'value' property
 onCancel | callback when the dialog is closed or the cancel action is pressed | required | func
 onOk | callback when the ok action is pressed | undefined | func
 cancelLabel | label for the cancel action | 'CANCEL' | string
@@ -118,6 +158,7 @@ okLabel | label for the ok action | 'OK' | string
 title | text for the dialog title | undefined | string
 titleColor | color of the dialog title | 'rgba(0, 0, 0, 0.87)' | string
 colorAccent | color of the action text | '#51BC78' | string
+scrolled | whether the form is in scrolled mode | false | bool
 
 ## License
 - [MIT](LICENSE)
