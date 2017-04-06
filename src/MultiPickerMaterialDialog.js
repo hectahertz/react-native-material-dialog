@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, ListView } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, ListView, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import MaterialDialog from './MaterialDialog';
 
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   },
   rowText:
   {
-    fontFamily: 'sans-serif',
+    fontFamily: Platform.OS === 'android' ? 'sans-serif' : 'System',
     color: colors.androidPrimaryTextColor,
     fontSize: 16,
   },

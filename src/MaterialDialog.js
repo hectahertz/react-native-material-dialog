@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Modal,
   Text,
+  Platform,
   TouchableHighlight,
   TouchableWithoutFeedback,
   View,
@@ -119,7 +120,14 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 20,
-    fontFamily: 'sans-serif-medium',
+    ...Platform.select({
+      android: {
+        fontFamily: 'sans-serif-medium',
+      },
+      ios:  {
+        fontWeight: '600'
+      }
+    })
   },
   contentContainer: {
     flex: -1,
@@ -157,7 +165,14 @@ const styles = StyleSheet.create({
   },
   actionText: {
     fontSize: 14,
-    fontFamily: 'sans-serif-medium',
+    ...Platform.select({
+      android: {
+        fontFamily: 'sans-serif-medium',
+      },
+      ios:  {
+        fontWeight: '600'
+      }
+    })
   },
 });
 
