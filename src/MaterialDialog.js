@@ -5,6 +5,7 @@ import {
   Text,
   Platform,
   TouchableHighlight,
+  KeyboardAvoidingView,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
@@ -40,44 +41,46 @@ export default class MaterialDialog extends Component {
         onRequestClose={this.props.onCancel}>
         <TouchableWithoutFeedback onPress={this.props.onCancel}>
           <View style={styles.backgroundOverlay}>
-            <View style={styles.modalContainer}>
-              <TouchableWithoutFeedback>
-                <View>
-                  {this.props.title != null
-                    ? <View
-                        style={this.props.scrolled
-                        ? styles.titleContainerScrolled
-                        : styles.titleContainer}>
-                        <Text
-                          style={[styles.titleText, { color: this.props.titleColor }]}>
-                          {this.props.title}
-                        </Text>
-                      </View>
-                    : null}
-                  <View
-                    style={this.props.scrolled
-                    ? styles.contentContainerScrolled
-                    : styles.contentContainer}>
-                    {this.props.children}
+            <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding': null}>
+              <View style={styles.modalContainer}>
+                <TouchableWithoutFeedback>
+                  <View>
+                    {this.props.title != null
+                      ? <View
+                          style={this.props.scrolled
+                          ? styles.titleContainerScrolled
+                          : styles.titleContainer}>
+                          <Text
+                            style={[styles.titleText, { color: this.props.titleColor }]}>
+                            {this.props.title}
+                          </Text>
+                        </View>
+                      : null}
+                    <View
+                      style={this.props.scrolled
+                      ? styles.contentContainerScrolled
+                      : styles.contentContainer}>
+                      {this.props.children}
+                    </View>
+                    {this.props.onOk != null && this.props.onCancel != null
+                      ? <View
+                          style={this.props.scrolled
+                          ? styles.actionsContainerScrolled
+                          : styles.actionsContainer}>
+                          <ActionButton
+                            colorAccent={this.props.colorAccent}
+                            onPress={this.props.onCancel}
+                            label={this.props.cancelLabel} />
+                          <ActionButton
+                            colorAccent={this.props.colorAccent}
+                            onPress={this.props.onOk}
+                            label={this.props.okLabel} />
+                        </View>
+                      : null}
                   </View>
-                  {this.props.onOk != null && this.props.onCancel != null
-                    ? <View
-                        style={this.props.scrolled
-                        ? styles.actionsContainerScrolled
-                        : styles.actionsContainer}>
-                        <ActionButton
-                          colorAccent={this.props.colorAccent}
-                          onPress={this.props.onCancel}
-                          label={this.props.cancelLabel} />
-                        <ActionButton
-                          colorAccent={this.props.colorAccent}
-                          onPress={this.props.onOk}
-                          label={this.props.okLabel} />
-                      </View>
-                    : null}
-                </View>
-              </TouchableWithoutFeedback>
-            </View>
+                </TouchableWithoutFeedback>
+              </View>
+            </KeyboardAvoidingView>
           </View>
         </TouchableWithoutFeedback>
       </Modal>
@@ -202,3 +205,4 @@ ActionButton.propTypes = {
   label: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
 };
+
