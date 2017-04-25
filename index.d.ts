@@ -47,7 +47,7 @@ interface Dialog {
     visible: boolean
 
     /**
-     * Deterimines if the form is in scrolled mode
+     * Determines if the form is in scrolled mode
      * 
      * Default is false
      */
