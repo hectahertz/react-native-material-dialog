@@ -68,7 +68,7 @@ interface MaterialDialogStatic extends Dialog {
     /**
      * Content of the dialog
      */
-    children: JSX.Element
+    children?: JSX.Element
 }
 
 
