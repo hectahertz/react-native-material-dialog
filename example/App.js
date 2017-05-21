@@ -5,9 +5,9 @@ import {
   Text,
   View,
   StatusBar,
-  TouchableNativeFeedback,
-  ToastAndroid,
+  TouchableOpacity,
   ScrollView,
+  Platform,
 } from 'react-native';
 import { MaterialDialog, MultiPickerMaterialDialog, SinglePickerMaterialDialog } from 'react-native-material-dialog';
 
@@ -48,59 +48,59 @@ export default class MaterialDialogExample extends Component {
                 MaterialDialog
               </Text>
 
-              <TouchableNativeFeedback
+              <TouchableOpacity
                 onPress={() => this.setState({ basicNoActionsVisible: true })}>
                 <View style={styles.button}>
                   <Text style={styles.buttonText}>
                     TITLE & NO ACTIONS
                   </Text>
                 </View>
-              </TouchableNativeFeedback>
+              </TouchableOpacity>
 
-              <TouchableNativeFeedback
+              <TouchableOpacity
                 onPress={() => this.setState({ basicNoTitleVisible: true })}>
                 <View style={styles.button}>
                   <Text style={styles.buttonText}>
                     NO TITLE & OK/CANCEL
                   </Text>
                 </View>
-              </TouchableNativeFeedback>
+              </TouchableOpacity>
 
-              <TouchableNativeFeedback
+              <TouchableOpacity
                 onPress={() => this.setState({ basicOkCancelVisible: true })}>
                 <View style={styles.button}>
                   <Text style={styles.buttonText}>
                     TITLE & OK/CANCEL
                   </Text>
                 </View>
-              </TouchableNativeFeedback>
+              </TouchableOpacity>
 
-              <TouchableNativeFeedback
+              <TouchableOpacity
                 onPress={() => this.setState({ basicCustomLabelsVisible: true })}>
                 <View style={styles.button}>
                   <Text style={styles.buttonText}>
                     NO TITLE & CUSTOM LABELS
                   </Text>
                 </View>
-              </TouchableNativeFeedback>
+              </TouchableOpacity>
 
-              <TouchableNativeFeedback
+              <TouchableOpacity
                 onPress={() => this.setState({ basicCustomColorsVisible: true })}>
                 <View style={styles.button}>
                   <Text style={styles.buttonText}>
                     CUSTOM COLORS
                   </Text>
                 </View>
-              </TouchableNativeFeedback>
+              </TouchableOpacity>
 
-              <TouchableNativeFeedback
+              <TouchableOpacity
                 onPress={() => this.setState({ basicScrolledListVisible: true })}>
                 <View style={styles.button}>
                   <Text style={styles.buttonText}>
                     SCROLLED WITH A CUSTOM LIST
                   </Text>
                 </View>
-              </TouchableNativeFeedback>
+              </TouchableOpacity>
             </View>
 
             <View style={styles.sectionContainer}>
@@ -108,14 +108,14 @@ export default class MaterialDialogExample extends Component {
                 MultiPickerMaterialDialog
               </Text>
               
-              <TouchableNativeFeedback
+              <TouchableOpacity
                 onPress={() => this.setState({ multiPickerVisible: true })}>
                 <View style={styles.button}>
                   <Text style={styles.buttonText}>
                     MULTI PICKER
                   </Text>
                 </View>
-              </TouchableNativeFeedback>
+              </TouchableOpacity>
               <Text numberOfLines={1} style={styles.viewText}>
                 {this.state.multiPickerSelectedItems.length === 0
                   ? 'No items selected.'
@@ -126,14 +126,14 @@ export default class MaterialDialogExample extends Component {
                     .join(', ')}
               </Text>
 
-              <TouchableNativeFeedback
+              <TouchableOpacity
                 onPress={() => this.setState({ scrolledMultiPickerVisible: true })}>
                 <View style={styles.button}>
                   <Text style={styles.buttonText}>
                     SCROLLED MULTI PICKER
                   </Text>
                 </View>
-              </TouchableNativeFeedback>
+              </TouchableOpacity>
               <Text numberOfLines={1} style={styles.viewText}>
                 {this.state.scrolledMultiPickerSelectedItems.length === 0
                   ? 'No items selected.'
@@ -149,28 +149,28 @@ export default class MaterialDialogExample extends Component {
                 SinglePickerMaterialDialog
               </Text>
 
-              <TouchableNativeFeedback
+              <TouchableOpacity
                 onPress={() => this.setState({ singlePickerVisible: true })}>
                 <View style={styles.button}>
                   <Text style={styles.buttonText}>
                     SINGLE PICKER
                   </Text>
                 </View>
-              </TouchableNativeFeedback>
+              </TouchableOpacity>
               <Text numberOfLines={1} style={styles.viewText}>
                 {this.state.singlePickerSelectedItem === undefined
                   ? 'No item selected.'
                   : 'Selected: ' + this.state.singlePickerSelectedItem.label}
               </Text>
               
-              <TouchableNativeFeedback
+              <TouchableOpacity
                 onPress={() => this.setState({ scrolledSinglePickerVisible: true })}>
                 <View style={styles.button}>
                   <Text style={styles.buttonText}>
                     SCROLLED SINGLE PICKER
                   </Text>
                 </View>
-              </TouchableNativeFeedback>
+              </TouchableOpacity>
               <Text numberOfLines={1} style={styles.viewText}>
                 {this.state.scrolledSinglePickerSelectedItem === undefined
                   ? 'No item selected.'
@@ -184,7 +184,6 @@ export default class MaterialDialogExample extends Component {
           title={'Information'}
           visible={this.state.basicNoActionsVisible}
           onCancel={() => {
-            ToastAndroid.show('Pressed CANCEL', ToastAndroid.SHORT);
             this.setState({ basicNoActionsVisible: false });
           }}>
           <Text style={styles.dialogText}>
@@ -195,11 +194,9 @@ export default class MaterialDialogExample extends Component {
         <MaterialDialog
           visible={this.state.basicNoTitleVisible}
           onOk={() => {
-            ToastAndroid.show('Pressed OK', ToastAndroid.SHORT);
             this.setState({ basicNoTitleVisible: false });
           }}
           onCancel={() => {
-            ToastAndroid.show('Pressed CANCEL', ToastAndroid.SHORT);
             this.setState({ basicNoTitleVisible: false });
           }}>
           <Text style={styles.dialogText}>
@@ -211,11 +208,9 @@ export default class MaterialDialogExample extends Component {
           title={"Use Google's Location Service?"}
           visible={this.state.basicOkCancelVisible}
           onOk={() => {
-            ToastAndroid.show('Pressed OK', ToastAndroid.SHORT);
             this.setState({ basicOkCancelVisible: false });
           }}
           onCancel={() => {
-            ToastAndroid.show('Pressed CANCEL', ToastAndroid.SHORT);
             this.setState({ basicOkCancelVisible: false });
           }}>
           <Text style={styles.dialogText}>
@@ -228,12 +223,10 @@ export default class MaterialDialogExample extends Component {
           visible={this.state.basicCustomLabelsVisible}
           okLabel="KEEP"
           onOk={() => {
-            ToastAndroid.show('Pressed KEEP', ToastAndroid.SHORT);
             this.setState({ basicCustomLabelsVisible: false });
           }}
           cancelLabel="DISCARD"
           onCancel={() => {
-            ToastAndroid.show('Pressed DISCARD', ToastAndroid.SHORT);
             this.setState({ basicCustomLabelsVisible: false });
           }}>
           <Text style={styles.dialogText}>
@@ -248,12 +241,10 @@ export default class MaterialDialogExample extends Component {
           colorAccent="#FF4081"
           okLabel="SAVE"
           onOk={() => {
-            ToastAndroid.show('Pressed SAVE', ToastAndroid.SHORT);
             this.setState({ basicCustomColorsVisible: false });
           }}
           cancelLabel="DISCARD"
           onCancel={() => {
-            ToastAndroid.show('Pressed DISCARD', ToastAndroid.SHORT);
             this.setState({ basicCustomColorsVisible: false });
           }}>
           <Text style={styles.dialogText}>
@@ -266,21 +257,19 @@ export default class MaterialDialogExample extends Component {
           title={'Scrollable list'}
           scrolled
           onOk={() => {
-            ToastAndroid.show('Pressed OK', ToastAndroid.SHORT);
             this.setState({ basicScrolledListVisible: false });
           }}
           onCancel={() => {
-            ToastAndroid.show('Pressed CANCEL', ToastAndroid.SHORT);
             this.setState({ basicScrolledListVisible: false });
           }}>
           <ScrollView
             contentContainerStyle={styles.scrollViewContainer}>
             {LONG_LIST.map((row) => (
-              <TouchableNativeFeedback key={row}>
+              <TouchableOpacity key={row}>
                 <View style={styles.row}>
                   <Text style={styles.dialogText}>{row}</Text>
                 </View>
-              </TouchableNativeFeedback>
+              </TouchableOpacity>
               ))}
           </ScrollView>
         </MaterialDialog>
@@ -387,15 +376,36 @@ const styles = StyleSheet.create({
     right: 0,
     top: 0,
     backgroundColor: '#3F51B5',
-    elevation: 4,
+    ...Platform.select({
+      android: {
+        elevation: 4
+      },
+      ios:  {
+        zIndex: 10
+      }
+    }),
   },
   navigationBarNameText: {
-    fontFamily: 'sans-serif-regular',
+    ...Platform.select({
+      android: {
+        fontFamily: 'sans-serif-regular',
+      },
+      ios:  {
+        fontWeight: '600'
+      }
+    }),
     color: 'white',
     fontSize: 20,
   },
   titleText: {
-    fontFamily: 'sans-serif-regular',
+    ...Platform.select({
+      android: {
+        fontFamily: 'sans-serif-regular',
+      },
+      ios:  {
+        fontWeight: '600'
+      }
+    }),
     color: 'rgba(0, 0, 0, 0.87)',
     fontSize: 20,
   },
@@ -412,12 +422,12 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   buttonText: {
-    fontFamily: 'sans-serif',
+    fontFamily: Platform.OS === 'android' ? 'sans-serif' : 'System',
     color: 'rgba(0, 0, 0, 0.87)',
     fontSize: 14,
   },
   dialogText: {
-    fontFamily: 'sans-serif',
+    fontFamily: Platform.OS === 'android' ? 'sans-serif' : 'System',
     color: 'rgba(0, 0, 0, 0.54)',
     fontSize: 17,
   },
@@ -432,7 +442,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   viewText: {
-    fontFamily: 'sans-serif',
+    fontFamily: Platform.OS === 'android' ? 'sans-serif' : 'System',
     color: 'rgba(0, 0, 0, 0.54)',
     fontSize: 14,
   },
