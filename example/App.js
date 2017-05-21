@@ -38,7 +38,7 @@ export default class MaterialDialogExample extends Component {
         <StatusBar backgroundColor="#303f9f" />
         <View style={styles.navigationBar}>
           <Text style={styles.navigationBarNameText}>
-            react-native-material-dialog examples
+            react-native-material-dialog
           </Text>
         </View>
         <ScrollView>
@@ -361,13 +361,13 @@ const styles = StyleSheet.create({
     marginTop: 56,
     justifyContent: 'flex-start',
     alignItems: 'stretch',
-    padding: 16,
+    padding: 20,
   },
   sectionContainer: {
-    paddingVertical: 8,
+    paddingVertical: 16,
   },
   navigationBar: {
-    height: 56,
+    height: 72,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -386,16 +386,17 @@ const styles = StyleSheet.create({
     }),
   },
   navigationBarNameText: {
+    marginTop: 20,
     ...Platform.select({
       android: {
         fontFamily: 'sans-serif-regular',
       },
       ios:  {
-        fontWeight: '600'
+        fontWeight: '300'
       }
     }),
     color: 'white',
-    fontSize: 20,
+    fontSize: 22,
   },
   titleText: {
     ...Platform.select({
@@ -403,7 +404,7 @@ const styles = StyleSheet.create({
         fontFamily: 'sans-serif-regular',
       },
       ios:  {
-        fontWeight: '600'
+        fontWeight: '500'
       }
     }),
     color: 'rgba(0, 0, 0, 0.87)',
@@ -419,7 +420,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#E8EAF6',
     elevation: 2,
     paddingHorizontal: 16,
-    marginVertical: 8,
+    marginTop: 16,
   },
   buttonText: {
     fontFamily: Platform.OS === 'android' ? 'sans-serif' : 'System',
@@ -445,6 +446,7 @@ const styles = StyleSheet.create({
     fontFamily: Platform.OS === 'android' ? 'sans-serif' : 'System',
     color: 'rgba(0, 0, 0, 0.54)',
     fontSize: 14,
+    marginTop: 8,
   },
 });
 

@@ -8,9 +8,13 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   View,
+  Dimensions,
 } from 'react-native';
 import colors from './colors';
 
+const {height, width} = Dimensions.get('window');
+
+// TODO: Don't rely on Dimensions for the actions footer layout
 // TODO: Support custom actions
 // TODO: Stacked full-width buttons
 
@@ -140,6 +144,7 @@ const styles = StyleSheet.create({
   },
   contentContainerScrolled: {
     flex: -1,
+    maxHeight: height - 236, // 106 vertical margin * 2 + 24px
     paddingHorizontal: 24,
   },
   actionsContainer: {
