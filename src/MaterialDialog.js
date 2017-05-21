@@ -104,6 +104,7 @@ const styles = StyleSheet.create({
     borderRadius: 2,
     backgroundColor: colors.background,
     elevation: 24,
+    overflow: 'hidden',
   },
   titleContainer: {
     paddingHorizontal: 24,
