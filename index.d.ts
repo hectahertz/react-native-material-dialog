@@ -93,6 +93,26 @@ interface Dialog {
     onCancel?(selected: SelectedItem): void
 }
 
+interface MaterialDialogStatic extends Dialog {
+    /**
+     * Content of the dialog
+     */
+    children?: JSX.Element
+}
+
+
+interface PickerItem {
+    /**
+     * Text shown to the user for the item
+     */
+    label: string
+
+    /**
+     * The value retured when the user selects this item
+     */
+    value: string
+}
+
 interface SinglePickerMaterialDialogStatic extends Dialog {
     /**
      * List of items shown to the user to select from
