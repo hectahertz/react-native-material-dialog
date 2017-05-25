@@ -56,12 +56,12 @@ interface Dialog {
     /**
      * Callback function fired when the confirm(ok) button is pressed
      */
-    onOk?(): void
+    onOk?(selected: PickerItem): void
 
     /**
      * Callback function fired when the cancel button is pressed
      */
-    onCancel?(): void
+    onCancel?(selected: PickerItem): void
 }
 
 interface MaterialDialogStatic extends Dialog {
