@@ -5,6 +5,33 @@
 
 import React from 'react'
 
+interface MaterialDialogStatic extends Dialog {
+    /**
+     * Content of the dialog
+     */
+    children?: JSX.Element
+}
+
+
+interface PickerItem {
+    /**
+     * Text shown to the user for the item
+     */
+    label: string
+
+    /**
+     * The value retured when the user selects this item
+     */
+    value: string
+}
+
+interface SelectedItem {
+    /**
+     * The item selected at the time
+     */
+    selectedItem: PickerItem
+}
+
 interface Dialog {
     /**
      * Title text for the dialog
@@ -55,13 +82,15 @@ interface Dialog {
 
     /**
      * Callback function fired when the confirm(ok) button is pressed
+     * @param selected
      */
-    onOk?(): void
+    onOk?(selected: SelectedItem): void
 
     /**
      * Callback function fired when the cancel button is pressed
+     * @param selected
      */
-    onCancel?(): void
+    onCancel?(selected: SelectedItem): void
 }
 
 interface MaterialDialogStatic extends Dialog {
