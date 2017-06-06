@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   },
   contentContainerScrolled: {
     flex: -1,
-    maxHeight: height - 236, // 106 vertical margin * 2 + 24px
+    maxHeight: height - 264, // (106px vertical margin * 2) + 52px
     paddingHorizontal: 24,
   },
   actionsContainer: {
