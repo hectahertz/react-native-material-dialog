@@ -82,6 +82,7 @@ cancelLabel | label for the cancel action | 'CANCEL' | string
 okLabel | label for the ok action | 'OK' | string
 title | text for the dialog title | undefined | string
 titleColor | color of the dialog title | 'rgba(0, 0, 0, 0.87)' | string
+backgroundColor | color of the dialog background | '#FFFFFF' | string
 colorAccent | color of the action text | '#51BC78' | string
 scrolled | whether the form is in scrolled mode | false | bool
 
@@ -118,6 +119,7 @@ cancelLabel | label for the cancel action | 'CANCEL' | string
 okLabel | label for the ok action | 'OK' | string
 title | text for the dialog title | undefined | string
 titleColor | color of the dialog title | 'rgba(0, 0, 0, 0.87)' | string
+backgroundColor | color of the dialog background | '#FFFFFF' | string
 colorAccent | color of the action text | '#51BC78' | string
 scrolled | whether the form is in scrolled mode | false | bool
 
@@ -157,6 +159,7 @@ cancelLabel | label for the cancel action | 'CANCEL' | string
 okLabel | label for the ok action | 'OK' | string
 title | text for the dialog title | undefined | string
 titleColor | color of the dialog title | 'rgba(0, 0, 0, 0.87)' | string
+backgroundColor | color of the dialog background | '#FFFFFF' | string
 colorAccent | color of the action text | '#51BC78' | string
 scrolled | whether the form is in scrolled mode | false | bool
 

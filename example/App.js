@@ -107,7 +107,7 @@ export default class MaterialDialogExample extends Component {
               <Text style={styles.titleText}>
                 MultiPickerMaterialDialog
               </Text>
-              
+
               <TouchableOpacity
                 onPress={() => this.setState({ multiPickerVisible: true })}>
                 <View style={styles.button}>
@@ -162,7 +162,7 @@ export default class MaterialDialogExample extends Component {
                   ? 'No item selected.'
                   : 'Selected: ' + this.state.singlePickerSelectedItem.label}
               </Text>
-              
+
               <TouchableOpacity
                 onPress={() => this.setState({ scrolledSinglePickerVisible: true })}>
                 <View style={styles.button}>
@@ -237,8 +237,9 @@ export default class MaterialDialogExample extends Component {
         <MaterialDialog
           visible={this.state.basicCustomColorsVisible}
           title={'Save the conversation?'}
-          titleColor="#FF4081"
-          colorAccent="#FF4081"
+          titleColor="#F0F0F0"
+          colorAccent="#6ABED0"
+          backgroundColor="#181712"
           okLabel="SAVE"
           onOk={() => {
             this.setState({ basicCustomColorsVisible: false });
@@ -247,7 +248,7 @@ export default class MaterialDialogExample extends Component {
           onCancel={() => {
             this.setState({ basicCustomColorsVisible: false });
           }}>
-          <Text style={styles.dialogText}>
+          <Text style={[styles.dialogText, { color: '#B0ABA0' }]}>
             Store the conversation log in Google Drive.
           </Text>
         </MaterialDialog>

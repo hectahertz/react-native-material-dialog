@@ -46,7 +46,7 @@ export default class MaterialDialog extends Component {
         <TouchableWithoutFeedback onPress={this.props.onCancel}>
           <View style={styles.backgroundOverlay}>
             <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : null}>
-              <View style={styles.modalContainer}>
+              <View style={[styles.modalContainer, { backgroundColor: this.props.backgroundColor }]}>
                 <TouchableWithoutFeedback>
                   <View>
                     {this.props.title != null
@@ -106,7 +106,6 @@ const styles = StyleSheet.create({
     paddingTop: 24,
     minWidth: 280,
     borderRadius: 2,
-    backgroundColor: colors.background,
     elevation: 24,
     overflow: 'hidden',
   },
@@ -202,6 +201,7 @@ MaterialDialog.defaultProps = {
   okLabel: 'OK',
   cancelLabel: 'CANCEL',
   titleColor: colors.androidPrimaryTextColor,
+  backgroundColor: colors.background,
   colorAccent: colors.androidColorAccent,
   scrolled: false,
 };
