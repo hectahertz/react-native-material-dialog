@@ -22,7 +22,7 @@
     "modal"
   ],
   "dependencies": {
-    "react-native-vector-icons": "^4.0.0"
+    "react-native-vector-icons": "^4.2.0"
   },
   "devDependencies": {
     "eslint": "^3.16.1",
