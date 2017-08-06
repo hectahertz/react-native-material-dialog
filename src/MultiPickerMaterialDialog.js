@@ -81,11 +81,7 @@ export default class MultiPickerMaterialDialog extends Component {
           .filter(row => row.selected),
         })}
         cancelLabel={this.props.cancelLabel}
-        onCancel={() => {
-          this
-          .props
-          .onCancel();
-        }}>
+        onCancel={this.props.onCancel}>
         <ListView dataSource={this.state.dataSource} renderRow={this.renderRow} />
       </MaterialDialog>
     );
