@@ -82,6 +82,7 @@ export default class MultiPickerMaterialDialog extends Component {
         })}
         cancelLabel={this.props.cancelLabel}
         onCancel={this.props.onCancel}>
+        {this.props.children}
         <ListView dataSource={this.state.dataSource} renderRow={this.renderRow} />
       </MaterialDialog>
     );
@@ -118,7 +119,8 @@ const styles = StyleSheet.create({
 
 MultiPickerMaterialDialog.propTypes = {
   visible: PropTypes.bool.isRequired,
-  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  items: PropTypes.arrayOf(PropTypes.object).isRequired,  
+  children: PropTypes.element.isRequired,
   selectedItems: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string,
   titleColor: PropTypes.string,
