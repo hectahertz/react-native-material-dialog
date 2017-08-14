@@ -54,16 +54,10 @@ Basic and customizable dialog that can hold any component.
 import { MaterialDialog } from 'react-native-material-dialog';
 
 <MaterialDialog
-  title={"Use Google's Location Service?"}
+  title="Use Google's Location Service?"
   visible={this.state.visible}
-  onOk={() => {
-  ToastAndroid.show("Pressed OK", ToastAndroid.SHORT);
-  this.setState({visible: false})
-}}
-  onCancel={() => {
-  ToastAndroid.show("Pressed CANCEL", ToastAndroid.SHORT);
-  this.setState({visible: false})
-}}>
+  onOk={() => this.setState({visible: false})}
+  onCancel={() => this.setState({visible: false})}>
   <Text style={styles.dialogText}>
     Let Google help apps determine location. This means sending anonymous location
     data to Google, even when no apps are running.
