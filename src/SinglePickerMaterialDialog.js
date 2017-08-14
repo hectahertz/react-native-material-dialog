@@ -107,6 +107,7 @@ export default class SinglePickerMaterialDialog extends Component {
           .props
           .onCancel();
         }}>
+        {this.props.children}
         <ListView dataSource={this.state.dataSource} renderRow={this.renderRow} />
       </MaterialDialog>
     );
@@ -143,6 +144,7 @@ const styles = StyleSheet.create({
 SinglePickerMaterialDialog.propTypes = {
   visible: PropTypes.bool.isRequired,
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  children: PropTypes.element,
   selectedItem: PropTypes.object,
   title: PropTypes.string,
   titleColor: PropTypes.string,
