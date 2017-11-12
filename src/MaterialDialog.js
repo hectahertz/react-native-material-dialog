@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   StyleSheet,
@@ -19,92 +19,70 @@ const { height } = Dimensions.get('window');
 // TODO: Support custom actions
 // TODO: Stacked full-width buttons
 
-class ActionButton extends Component {
-  render() {
-    return (
-      <TouchableHighlight
-        style={styles.actionContainer}
-        underlayColor={colors.androidPressedUnderlay}
-        onPress={this.props.onPress}
-      >
-        <Text style={[styles.actionText, { color: this.props.colorAccent }]}>
-          {this.props.label}
-        </Text>
-      </TouchableHighlight>
-    );
-  }
-}
+const ActionButton = ({ onPress, colorAccent, label }) => (
+  <TouchableHighlight
+    style={styles.actionContainer}
+    underlayColor={colors.androidPressedUnderlay}
+    onPress={onPress}
+  >
+    <Text style={[styles.actionText, { color: colorAccent }]}>{label}</Text>
+  </TouchableHighlight>
+);
 
-export default class MaterialDialog extends Component {
-  render() {
-    return (
-      <Modal
-        animationType={'fade'}
-        transparent
-        hardwareAccelerated
-        visible={this.props.visible}
-        onRequestClose={this.props.onCancel}
-      >
-        <TouchableWithoutFeedback onPress={this.props.onCancel}>
-          <View style={styles.backgroundOverlay}>
-            <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : null}>
-              <View
-                style={[styles.modalContainer, { backgroundColor: this.props.backgroundColor }]}
-              >
-                <TouchableWithoutFeedback>
-                  <View>
-                    {this.props.title != null ? (
-                      <View
-                        style={
-                          this.props.scrolled
-                            ? styles.titleContainerScrolled
-                            : styles.titleContainer
-                        }
-                      >
-                        <Text style={[styles.titleText, { color: this.props.titleColor }]}>
-                          {this.props.title}
-                        </Text>
-                      </View>
-                    ) : null}
-                    <View
-                      style={
-                        this.props.scrolled
-                          ? styles.contentContainerScrolled
-                          : styles.contentContainer
-                      }
-                    >
-                      {this.props.children}
-                    </View>
-                    {this.props.onOk != null && this.props.onCancel != null ? (
-                      <View
-                        style={
-                          this.props.scrolled
-                            ? styles.actionsContainerScrolled
-                            : styles.actionsContainer
-                        }
-                      >
-                        <ActionButton
-                          colorAccent={this.props.colorAccent}
-                          onPress={this.props.onCancel}
-                          label={this.props.cancelLabel}
-                        />
-                        <ActionButton
-                          colorAccent={this.props.colorAccent}
-                          onPress={this.props.onOk}
-                          label={this.props.okLabel}
-                        />
-                      </View>
-                    ) : null}
+const MaterialDialog = ({
+  visible,
+  scrolled,
+  title,
+  titleColor,
+  colorAccent,
+  backgroundColor,
+  onOk,
+  onCancel,
+  okLabel,
+  cancelLabel,
+  children,
+}) => (
+  <Modal
+    animationType={'fade'}
+    transparent
+    hardwareAccelerated
+    visible={visible}
+    onRequestClose={onCancel}
+  >
+    <TouchableWithoutFeedback onPress={onCancel}>
+      <View style={styles.backgroundOverlay}>
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : null}>
+          <View style={[styles.modalContainer, { backgroundColor }]}>
+            <TouchableWithoutFeedback>
+              <View>
+                {title != null ? (
+                  <View style={scrolled ? styles.titleContainerScrolled : styles.titleContainer}>
+                    <Text style={[styles.titleText, { color: titleColor }]}>{title}</Text>
                   </View>
-                </TouchableWithoutFeedback>
+                ) : null}
+                <View style={scrolled ? styles.contentContainerScrolled : styles.contentContainer}>
+                  {children}
+                </View>
+                {onOk != null && onCancel != null ? (
+                  <View
+                    style={scrolled ? styles.actionsContainerScrolled : styles.actionsContainer}
+                  >
+                    <ActionButton
+                      colorAccent={colorAccent}
+                      onPress={onCancel}
+                      label={cancelLabel}
+                    />
+                    <ActionButton colorAccent={colorAccent} onPress={onOk} label={okLabel} />
+                  </View>
+                ) : null}
               </View>
-            </KeyboardAvoidingView>
+            </TouchableWithoutFeedback>
           </View>
-        </TouchableWithoutFeedback>
-      </Modal>
-    );
-  }
-}
+        </KeyboardAvoidingView>
+      </View>
+    </TouchableWithoutFeedback>
+  </Modal>
+);
 
 const styles = StyleSheet.create({
   backgroundOverlay: {
@@ -229,3 +207,5 @@ ActionButton.propTypes = {
   label: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
 };
+
+export default MaterialDialog;
