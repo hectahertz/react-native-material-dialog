@@ -8,7 +8,7 @@ Material design compliant dialog components for React Native.
 
 Includes an generic dialog that can contain any view and several pre-styled scenarios.
 
-![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/3.png)
+![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/ios1.png)
 ![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/7.png)
 
 Javascript-only, uses react-native's Modal component.
