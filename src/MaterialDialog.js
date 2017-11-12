@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import colors from './colors';
 
-const {height, width} = Dimensions.get('window');
+const { height } = Dimensions.get('window');
 
 // TODO: Don't rely on Dimensions for the actions footer layout
 // TODO: Support custom actions
@@ -25,9 +25,9 @@ class ActionButton extends Component {
       <TouchableHighlight
         style={styles.actionContainer}
         underlayColor={colors.androidPressedUnderlay}
-        onPress={this.props.onPress}>
-        <Text
-          style={[styles.actionText, { color: this.props.colorAccent }]}>
+        onPress={this.props.onPress}
+      >
+        <Text style={[styles.actionText, { color: this.props.colorAccent }]}>
           {this.props.label}
         </Text>
       </TouchableHighlight>
@@ -43,45 +43,58 @@ export default class MaterialDialog extends Component {
         transparent
         hardwareAccelerated
         visible={this.props.visible}
-        onRequestClose={this.props.onCancel}>
+        onRequestClose={this.props.onCancel}
+      >
         <TouchableWithoutFeedback onPress={this.props.onCancel}>
           <View style={styles.backgroundOverlay}>
             <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : null}>
-              <View style={[styles.modalContainer, { backgroundColor: this.props.backgroundColor }]}>
+              <View
+                style={[styles.modalContainer, { backgroundColor: this.props.backgroundColor }]}
+              >
                 <TouchableWithoutFeedback>
                   <View>
-                    {this.props.title != null
-                      ? <View
-                        style={this.props.scrolled
-                          ? styles.titleContainerScrolled
-                          : styles.titleContainer}>
-                        <Text
-                          style={[styles.titleText, { color: this.props.titleColor }]}>
+                    {this.props.title != null ? (
+                      <View
+                        style={
+                          this.props.scrolled
+                            ? styles.titleContainerScrolled
+                            : styles.titleContainer
+                        }
+                      >
+                        <Text style={[styles.titleText, { color: this.props.titleColor }]}>
                           {this.props.title}
                         </Text>
                       </View>
-                      : null}
+                    ) : null}
                     <View
-                      style={this.props.scrolled
-                        ? styles.contentContainerScrolled
-                        : styles.contentContainer}>
+                      style={
+                        this.props.scrolled
+                          ? styles.contentContainerScrolled
+                          : styles.contentContainer
+                      }
+                    >
                       {this.props.children}
                     </View>
-                    {this.props.onOk != null && this.props.onCancel != null
-                      ? <View
-                        style={this.props.scrolled
-                          ? styles.actionsContainerScrolled
-                          : styles.actionsContainer}>
+                    {this.props.onOk != null && this.props.onCancel != null ? (
+                      <View
+                        style={
+                          this.props.scrolled
+                            ? styles.actionsContainerScrolled
+                            : styles.actionsContainer
+                        }
+                      >
                         <ActionButton
                           colorAccent={this.props.colorAccent}
                           onPress={this.props.onCancel}
-                          label={this.props.cancelLabel} />
+                          label={this.props.cancelLabel}
+                        />
                         <ActionButton
                           colorAccent={this.props.colorAccent}
                           onPress={this.props.onOk}
-                          label={this.props.okLabel} />
+                          label={this.props.okLabel}
+                        />
                       </View>
-                      : null}
+                    ) : null}
                   </View>
                 </TouchableWithoutFeedback>
               </View>
@@ -133,9 +146,9 @@ const styles = StyleSheet.create({
         fontFamily: 'sans-serif-medium',
       },
       ios: {
-        fontWeight: '600'
-      }
-    })
+        fontWeight: '600',
+      },
+    }),
   },
   contentContainer: {
     flex: -1,
@@ -179,9 +192,9 @@ const styles = StyleSheet.create({
         fontFamily: 'sans-serif-medium',
       },
       ios: {
-        fontWeight: '600'
-      }
-    })
+        fontWeight: '600',
+      },
+    }),
   },
 });
 
@@ -194,9 +207,10 @@ MaterialDialog.propTypes = {
   okLabel: PropTypes.string,
   title: PropTypes.string,
   titleColor: PropTypes.string,
+  backgroundColor: PropTypes.string,
   colorAccent: PropTypes.string,
   scrolled: PropTypes.bool,
-}
+};
 
 MaterialDialog.defaultProps = {
   okLabel: 'OK',
@@ -212,4 +226,3 @@ ActionButton.propTypes = {
   label: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
 };
-

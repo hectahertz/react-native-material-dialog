@@ -7,7 +7,6 @@ import MaterialDialog from './MaterialDialog';
 import colors from './colors';
 
 export default class MultiPickerMaterialDialog extends Component {
-
   constructor(props) {
     super(props);
 
@@ -28,10 +27,7 @@ export default class MultiPickerMaterialDialog extends Component {
   componentWillReceiveProps(nextProps) {
     const { items, selectedItems } = nextProps;
     const rows = buildSelectedRows(items, selectedItems);
-    const dataSource = this
-      .state
-      .dataSource
-      .cloneWithRows(rows);
+    const dataSource = this.state.dataSource.cloneWithRows(rows);
     this.setState({ dataSource, rows });
   }
 
@@ -40,30 +36,24 @@ export default class MultiPickerMaterialDialog extends Component {
     rows[rowID] = Object.assign({}, rows[rowID], {
       selected: !rows[rowID].selected,
     });
-    const dataSource = this
-      .state
-      .dataSource
-      .cloneWithRows(rows);
+    const dataSource = this.state.dataSource.cloneWithRows(rows);
     this.setState({ dataSource, rows });
   }
 
   renderRow = (row, sectionID, rowID) => (
     <TouchableOpacity key={row.value} onPress={() => this.onRowPress(rowID)}>
-      <View
-        style={styles.rowContainer}>
+      <View style={styles.rowContainer}>
         <View style={styles.iconContainer}>
           <Icon
-            name={row.selected
-            ? 'check-box'
-            : 'check-box-outline-blank'}
+            name={row.selected ? 'check-box' : 'check-box-outline-blank'}
             color={this.props.colorAccent}
-            size={24} />
+            size={24}
+          />
         </View>
-        <Text
-          style={styles.rowText}>{row.label}</Text>
+        <Text style={styles.rowText}>{row.label}</Text>
       </View>
     </TouchableOpacity>
-    );
+  );
 
   render() {
     return (
@@ -74,14 +64,13 @@ export default class MultiPickerMaterialDialog extends Component {
         visible={this.props.visible}
         okLabel={this.props.okLabel}
         scrolled={this.props.scrolled}
-        onOk={() => this.props.onOk({
-          selectedItems: this
-          .state
-          .rows
-          .filter(row => row.selected),
-        })}
+        onOk={() =>
+          this.props.onOk({
+            selectedItems: this.state.rows.filter(row => row.selected),
+          })}
         cancelLabel={this.props.cancelLabel}
-        onCancel={this.props.onCancel}>
+        onCancel={this.props.onCancel}
+      >
         <ListView dataSource={this.state.dataSource} renderRow={this.renderRow} />
       </MaterialDialog>
     );
@@ -89,9 +78,11 @@ export default class MultiPickerMaterialDialog extends Component {
 }
 
 function buildSelectedRows(items, selectedItems) {
-  const rows = items.map(item => Object.assign({}, item, {
-    selected: selectedItems.some(i => i.value === item.value),
-  }));
+  const rows = items.map(item =>
+    Object.assign({}, item, {
+      selected: selectedItems.some(i => i.value === item.value),
+    }),
+  );
 
   return rows;
 }
@@ -104,12 +95,10 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
-  iconContainer:
-  {
+  iconContainer: {
     marginRight: 16,
   },
-  rowText:
-  {
+  rowText: {
     fontFamily: Platform.OS === 'android' ? 'sans-serif' : 'System',
     color: colors.androidPrimaryTextColor,
     fontSize: 16,

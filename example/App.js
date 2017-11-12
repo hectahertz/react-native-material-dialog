@@ -9,10 +9,13 @@ import {
   ScrollView,
   Platform,
 } from 'react-native';
-import { MaterialDialog, MultiPickerMaterialDialog, SinglePickerMaterialDialog } from 'react-native-material-dialog';
+import {
+  MaterialDialog,
+  MultiPickerMaterialDialog,
+  SinglePickerMaterialDialog,
+} from 'react-native-material-dialog';
 
 export default class MaterialDialogExample extends Component {
-
   state = {
     basicNoActionsVisible: false,
     basicNoTitleVisible: false,
@@ -28,7 +31,7 @@ export default class MaterialDialogExample extends Component {
     singlePickerSelectedItem: undefined,
     scrolledSinglePickerVisible: false,
     scrolledSinglePickerSelectedItem: undefined,
-  }
+  };
 
   // TODO Add examples with more complex views
 
@@ -37,144 +40,102 @@ export default class MaterialDialogExample extends Component {
       <View style={styles.container}>
         <StatusBar backgroundColor="#303f9f" />
         <View style={styles.navigationBar}>
-          <Text style={styles.navigationBarNameText}>
-            react-native-material-dialog
-          </Text>
+          <Text style={styles.navigationBarNameText}>react-native-material-dialog</Text>
         </View>
         <ScrollView>
           <View style={styles.contentContainer}>
             <View style={styles.sectionContainer}>
-              <Text style={styles.titleText}>
-                MaterialDialog
-              </Text>
+              <Text style={styles.titleText}>MaterialDialog</Text>
 
-              <TouchableOpacity
-                onPress={() => this.setState({ basicNoActionsVisible: true })}>
+              <TouchableOpacity onPress={() => this.setState({ basicNoActionsVisible: true })}>
                 <View style={styles.button}>
-                  <Text style={styles.buttonText}>
-                    TITLE & NO ACTIONS
-                  </Text>
+                  <Text style={styles.buttonText}>TITLE & NO ACTIONS</Text>
                 </View>
               </TouchableOpacity>
 
-              <TouchableOpacity
-                onPress={() => this.setState({ basicNoTitleVisible: true })}>
+              <TouchableOpacity onPress={() => this.setState({ basicNoTitleVisible: true })}>
                 <View style={styles.button}>
-                  <Text style={styles.buttonText}>
-                    NO TITLE & OK/CANCEL
-                  </Text>
+                  <Text style={styles.buttonText}>NO TITLE & OK/CANCEL</Text>
                 </View>
               </TouchableOpacity>
 
-              <TouchableOpacity
-                onPress={() => this.setState({ basicOkCancelVisible: true })}>
+              <TouchableOpacity onPress={() => this.setState({ basicOkCancelVisible: true })}>
                 <View style={styles.button}>
-                  <Text style={styles.buttonText}>
-                    TITLE & OK/CANCEL
-                  </Text>
+                  <Text style={styles.buttonText}>TITLE & OK/CANCEL</Text>
                 </View>
               </TouchableOpacity>
 
-              <TouchableOpacity
-                onPress={() => this.setState({ basicCustomLabelsVisible: true })}>
+              <TouchableOpacity onPress={() => this.setState({ basicCustomLabelsVisible: true })}>
                 <View style={styles.button}>
-                  <Text style={styles.buttonText}>
-                    NO TITLE & CUSTOM LABELS
-                  </Text>
+                  <Text style={styles.buttonText}>NO TITLE & CUSTOM LABELS</Text>
                 </View>
               </TouchableOpacity>
 
-              <TouchableOpacity
-                onPress={() => this.setState({ basicCustomColorsVisible: true })}>
+              <TouchableOpacity onPress={() => this.setState({ basicCustomColorsVisible: true })}>
                 <View style={styles.button}>
-                  <Text style={styles.buttonText}>
-                    CUSTOM COLORS
-                  </Text>
+                  <Text style={styles.buttonText}>CUSTOM COLORS</Text>
                 </View>
               </TouchableOpacity>
 
-              <TouchableOpacity
-                onPress={() => this.setState({ basicScrolledListVisible: true })}>
+              <TouchableOpacity onPress={() => this.setState({ basicScrolledListVisible: true })}>
                 <View style={styles.button}>
-                  <Text style={styles.buttonText}>
-                    SCROLLED WITH A CUSTOM LIST
-                  </Text>
+                  <Text style={styles.buttonText}>SCROLLED WITH A CUSTOM LIST</Text>
                 </View>
               </TouchableOpacity>
             </View>
 
             <View style={styles.sectionContainer}>
-              <Text style={styles.titleText}>
-                MultiPickerMaterialDialog
-              </Text>
+              <Text style={styles.titleText}>MultiPickerMaterialDialog</Text>
 
-              <TouchableOpacity
-                onPress={() => this.setState({ multiPickerVisible: true })}>
+              <TouchableOpacity onPress={() => this.setState({ multiPickerVisible: true })}>
                 <View style={styles.button}>
-                  <Text style={styles.buttonText}>
-                    MULTI PICKER
-                  </Text>
+                  <Text style={styles.buttonText}>MULTI PICKER</Text>
                 </View>
               </TouchableOpacity>
               <Text numberOfLines={1} style={styles.viewText}>
                 {this.state.multiPickerSelectedItems.length === 0
                   ? 'No items selected.'
-                  : 'Selected: ' + this
-                    .state
-                    .multiPickerSelectedItems
-                    .map(item => item.label)
-                    .join(', ')}
+                  : `Selected: ${
+                    this.state.multiPickerSelectedItems.map(item => item.label).join(', ')}`}
               </Text>
 
-              <TouchableOpacity
-                onPress={() => this.setState({ scrolledMultiPickerVisible: true })}>
+              <TouchableOpacity onPress={() => this.setState({ scrolledMultiPickerVisible: true })}>
                 <View style={styles.button}>
-                  <Text style={styles.buttonText}>
-                    SCROLLED MULTI PICKER
-                  </Text>
+                  <Text style={styles.buttonText}>SCROLLED MULTI PICKER</Text>
                 </View>
               </TouchableOpacity>
               <Text numberOfLines={1} style={styles.viewText}>
                 {this.state.scrolledMultiPickerSelectedItems.length === 0
                   ? 'No items selected.'
-                  : 'Selected: ' + this
-                    .state
-                    .scrolledMultiPickerSelectedItems
-                    .map(item => item.label)
-                    .join(', ')}
+                  : `Selected: ${
+                    this.state.scrolledMultiPickerSelectedItems.map(item => item.label).join(', ')}`}
               </Text>
             </View>
             <View style={styles.sectionContainer}>
-              <Text style={styles.titleText}>
-                SinglePickerMaterialDialog
-              </Text>
+              <Text style={styles.titleText}>SinglePickerMaterialDialog</Text>
 
-              <TouchableOpacity
-                onPress={() => this.setState({ singlePickerVisible: true })}>
+              <TouchableOpacity onPress={() => this.setState({ singlePickerVisible: true })}>
                 <View style={styles.button}>
-                  <Text style={styles.buttonText}>
-                    SINGLE PICKER
-                  </Text>
+                  <Text style={styles.buttonText}>SINGLE PICKER</Text>
                 </View>
               </TouchableOpacity>
               <Text numberOfLines={1} style={styles.viewText}>
                 {this.state.singlePickerSelectedItem === undefined
                   ? 'No item selected.'
-                  : 'Selected: ' + this.state.singlePickerSelectedItem.label}
+                  : `Selected: ${this.state.singlePickerSelectedItem.label}`}
               </Text>
 
               <TouchableOpacity
-                onPress={() => this.setState({ scrolledSinglePickerVisible: true })}>
+                onPress={() => this.setState({ scrolledSinglePickerVisible: true })}
+              >
                 <View style={styles.button}>
-                  <Text style={styles.buttonText}>
-                    SCROLLED SINGLE PICKER
-                  </Text>
+                  <Text style={styles.buttonText}>SCROLLED SINGLE PICKER</Text>
                 </View>
               </TouchableOpacity>
               <Text numberOfLines={1} style={styles.viewText}>
                 {this.state.scrolledSinglePickerSelectedItem === undefined
                   ? 'No item selected.'
-                  : 'Selected: ' + this.state.scrolledSinglePickerSelectedItem.label}
+                  : `Selected: ${this.state.scrolledSinglePickerSelectedItem.label}`}
               </Text>
             </View>
           </View>
@@ -185,10 +146,9 @@ export default class MaterialDialogExample extends Component {
           visible={this.state.basicNoActionsVisible}
           onCancel={() => {
             this.setState({ basicNoActionsVisible: false });
-          }}>
-          <Text style={styles.dialogText}>
-            You logged out of the application.
-          </Text>
+          }}
+        >
+          <Text style={styles.dialogText}>You logged out of the application.</Text>
         </MaterialDialog>
 
         <MaterialDialog
@@ -198,10 +158,9 @@ export default class MaterialDialogExample extends Component {
           }}
           onCancel={() => {
             this.setState({ basicNoTitleVisible: false });
-          }}>
-          <Text style={styles.dialogText}>
-            Set alarm?
-          </Text>
+          }}
+        >
+          <Text style={styles.dialogText}>Set alarm?</Text>
         </MaterialDialog>
 
         <MaterialDialog
@@ -212,10 +171,11 @@ export default class MaterialDialogExample extends Component {
           }}
           onCancel={() => {
             this.setState({ basicOkCancelVisible: false });
-          }}>
+          }}
+        >
           <Text style={styles.dialogText}>
-            Let Google help apps determine location. This means sending anonymous location
-            data to Google, even when no apps are running.
+            Let Google help apps determine location. This means sending anonymous location data to
+            Google, even when no apps are running.
           </Text>
         </MaterialDialog>
 
@@ -228,10 +188,9 @@ export default class MaterialDialogExample extends Component {
           cancelLabel="DISCARD"
           onCancel={() => {
             this.setState({ basicCustomLabelsVisible: false });
-          }}>
-          <Text style={styles.dialogText}>
-            Discard draft?
-          </Text>
+          }}
+        >
+          <Text style={styles.dialogText}>Discard draft?</Text>
         </MaterialDialog>
 
         <MaterialDialog
@@ -247,7 +206,8 @@ export default class MaterialDialogExample extends Component {
           cancelLabel="DISCARD"
           onCancel={() => {
             this.setState({ basicCustomColorsVisible: false });
-          }}>
+          }}
+        >
           <Text style={[styles.dialogText, { color: '#B0ABA0' }]}>
             Store the conversation log in Google Drive.
           </Text>
@@ -262,16 +222,16 @@ export default class MaterialDialogExample extends Component {
           }}
           onCancel={() => {
             this.setState({ basicScrolledListVisible: false });
-          }}>
-          <ScrollView
-            contentContainerStyle={styles.scrollViewContainer}>
-            {LONG_LIST.map((row) => (
+          }}
+        >
+          <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+            {LONG_LIST.map(row => (
               <TouchableOpacity key={row}>
                 <View style={styles.row}>
                   <Text style={styles.dialogText}>{row}</Text>
                 </View>
               </TouchableOpacity>
-              ))}
+            ))}
           </ScrollView>
         </MaterialDialog>
 
@@ -284,7 +244,8 @@ export default class MaterialDialogExample extends Component {
           onOk={(result) => {
             this.setState({ multiPickerVisible: false });
             this.setState({ multiPickerSelectedItems: result.selectedItems });
-          }} />
+          }}
+        />
 
         <MultiPickerMaterialDialog
           title={'Pick some more elements!'}
@@ -295,8 +256,11 @@ export default class MaterialDialogExample extends Component {
           onCancel={() => this.setState({ scrolledMultiPickerVisible: false })}
           onOk={(result) => {
             this.setState({ scrolledMultiPickerVisible: false });
-            this.setState({ scrolledMultiPickerSelectedItems: result.selectedItems });
-          }} />
+            this.setState({
+              scrolledMultiPickerSelectedItems: result.selectedItems,
+            });
+          }}
+        />
 
         <SinglePickerMaterialDialog
           title={'Pick one element!'}
@@ -307,7 +271,8 @@ export default class MaterialDialogExample extends Component {
           onOk={(result) => {
             this.setState({ singlePickerVisible: false });
             this.setState({ singlePickerSelectedItem: result.selectedItem });
-          }} />
+          }}
+        />
 
         <SinglePickerMaterialDialog
           title={'Pick one element!'}
@@ -318,8 +283,11 @@ export default class MaterialDialogExample extends Component {
           onCancel={() => this.setState({ scrolledSinglePickerVisible: false })}
           onOk={(result) => {
             this.setState({ scrolledSinglePickerVisible: false });
-            this.setState({ scrolledSinglePickerSelectedItem: result.selectedItem });
-          }} />
+            this.setState({
+              scrolledSinglePickerSelectedItem: result.selectedItem,
+            });
+          }}
+        />
       </View>
     );
   }
@@ -346,11 +314,7 @@ const LONG_LIST = [
   'List element 19',
 ];
 
-const SHORT_LIST = [
-  'List element 1',
-  'List element 2',
-  'List element 3',
-];
+const SHORT_LIST = ['List element 1', 'List element 2', 'List element 3'];
 
 const styles = StyleSheet.create({
   container: {
@@ -379,11 +343,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#3F51B5',
     ...Platform.select({
       android: {
-        elevation: 4
+        elevation: 4,
       },
-      ios:  {
-        zIndex: 10
-      }
+      ios: {
+        zIndex: 10,
+      },
     }),
   },
   navigationBarNameText: {
@@ -392,9 +356,9 @@ const styles = StyleSheet.create({
       android: {
         fontFamily: 'sans-serif-regular',
       },
-      ios:  {
-        fontWeight: '300'
-      }
+      ios: {
+        fontWeight: '300',
+      },
     }),
     color: 'white',
     fontSize: 22,
@@ -404,9 +368,9 @@ const styles = StyleSheet.create({
       android: {
         fontFamily: 'sans-serif-regular',
       },
-      ios:  {
-        fontWeight: '500'
-      }
+      ios: {
+        fontWeight: '500',
+      },
     }),
     color: 'rgba(0, 0, 0, 0.87)',
     fontSize: 20,

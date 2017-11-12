@@ -7,7 +7,6 @@ import MaterialDialog from './MaterialDialog';
 import colors from './colors';
 
 export default class SinglePickerMaterialDialog extends Component {
-
   constructor(props) {
     super(props);
 
@@ -57,35 +56,31 @@ export default class SinglePickerMaterialDialog extends Component {
     const { selectedIndex } = this.state;
 
     if (selectedIndex != null) {
-      rows[selectedIndex] = Object.assign({}, rows[selectedIndex], { selected: false });
+      rows[selectedIndex] = Object.assign({}, rows[selectedIndex], {
+        selected: false,
+      });
     }
     rows[rowID] = Object.assign({}, rows[rowID], { selected: true });
 
-    const dataSource = this
-      .state
-      .dataSource
-      .cloneWithRows(rows);
+    const dataSource = this.state.dataSource.cloneWithRows(rows);
 
     this.setState({ dataSource, rows, selectedIndex: rowID });
   }
 
   renderRow = (row, sectionID, rowID) => (
     <TouchableOpacity key={row.value} onPress={() => this.onRowPress(rowID)}>
-      <View
-        style={styles.rowContainer}>
+      <View style={styles.rowContainer}>
         <View style={styles.iconContainer}>
           <Icon
-            name={row.selected
-            ? 'radio-button-checked'
-            : 'radio-button-unchecked'}
+            name={row.selected ? 'radio-button-checked' : 'radio-button-unchecked'}
             color={this.props.colorAccent}
-            size={24} />
+            size={24}
+          />
         </View>
-        <Text
-          style={styles.rowText}>{row.label}</Text>
+        <Text style={styles.rowText}>{row.label}</Text>
       </View>
     </TouchableOpacity>
-    );
+  );
 
   render() {
     return (
@@ -96,17 +91,15 @@ export default class SinglePickerMaterialDialog extends Component {
         visible={this.props.visible}
         okLabel={this.props.okLabel}
         scrolled={this.props.scrolled}
-        onOk={() => this.props.onOk({
-          selectedItem: this
-          .state
-          .rows[this.state.selectedIndex],
-        })}
+        onOk={() =>
+          this.props.onOk({
+            selectedItem: this.state.rows[this.state.selectedIndex],
+          })}
         cancelLabel={this.props.cancelLabel}
         onCancel={() => {
-          this
-          .props
-          .onCancel();
-        }}>
+          this.props.onCancel();
+        }}
+      >
         <ListView dataSource={this.state.dataSource} renderRow={this.renderRow} />
       </MaterialDialog>
     );
@@ -121,19 +114,17 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
-  iconContainer:
-  {
+  iconContainer: {
     marginRight: 16,
   },
-  rowText:
-  {
+  rowText: {
     ...Platform.select({
       android: {
         fontFamily: 'sans-serif-medium',
       },
-      ios:  {
-        fontWeight: '600'
-      }
+      ios: {
+        fontWeight: '600',
+      },
     }),
     color: colors.androidPrimaryTextColor,
     fontSize: 16,
