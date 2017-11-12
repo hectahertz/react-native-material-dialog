@@ -26,6 +26,7 @@
     "react-native-vector-icons": "^4.2.0"
   },
   "devDependencies": {
+    "babel-eslint": "^8.0.2",
     "eslint": "^3.16.1",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
