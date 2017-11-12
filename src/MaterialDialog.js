@@ -215,10 +215,13 @@ MaterialDialog.propTypes = {
 MaterialDialog.defaultProps = {
   okLabel: 'OK',
   cancelLabel: 'CANCEL',
+  title: undefined,
   titleColor: colors.androidPrimaryTextColor,
   backgroundColor: colors.background,
   colorAccent: colors.androidColorAccent,
   scrolled: false,
+  onOk: undefined,
+  onCancel: undefined,
 };
 
 ActionButton.propTypes = {

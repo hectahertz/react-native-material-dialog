@@ -134,7 +134,10 @@ const styles = StyleSheet.create({
 SinglePickerMaterialDialog.propTypes = {
   visible: PropTypes.bool.isRequired,
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
-  selectedItem: PropTypes.object,
+  selectedItem: PropTypes.shape({
+    value: PropTypes.object,
+    label: PropTypes.string,
+  }),
   title: PropTypes.string,
   titleColor: PropTypes.string,
   colorAccent: PropTypes.string,
@@ -147,6 +150,7 @@ SinglePickerMaterialDialog.propTypes = {
 
 SinglePickerMaterialDialog.defaultProps = {
   selectedItem: undefined,
+  title: undefined,
   titleColor: undefined,
   colorAccent: colors.androidColorAccent,
   cancelLabel: undefined,

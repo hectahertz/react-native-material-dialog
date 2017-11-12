@@ -121,6 +121,7 @@ MultiPickerMaterialDialog.propTypes = {
 
 MultiPickerMaterialDialog.defaultProps = {
   selectedItems: [],
+  title: undefined,
   titleColor: undefined,
   colorAccent: colors.androidColorAccent,
   cancelLabel: undefined,
