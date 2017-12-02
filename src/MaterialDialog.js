@@ -36,6 +36,7 @@ const MaterialDialog = ({
   titleColor,
   colorAccent,
   backgroundColor,
+  addPadding,
   onOk,
   onCancel,
   okLabel,
@@ -52,7 +53,13 @@ const MaterialDialog = ({
     <TouchableWithoutFeedback onPress={onCancel}>
       <View style={styles.backgroundOverlay}>
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : null}>
-          <View style={[styles.modalContainer, { backgroundColor }]}>
+          <View
+            style={[
+              styles.modalContainer,
+              (title != null || (addPadding && title == null)) && styles.modalContainerPadding,
+              { backgroundColor },
+            ]}
+          >
             <TouchableWithoutFeedback>
               <View>
                 {title != null ? (
@@ -60,7 +67,16 @@ const MaterialDialog = ({
                     <Text style={[styles.titleText, { color: titleColor }]}>{title}</Text>
                   </View>
                 ) : null}
-                <View style={scrolled ? styles.contentContainerScrolled : styles.contentContainer}>
+                <View
+                  style={
+                    scrolled
+                      ? [
+                        styles.contentContainerScrolled,
+                        addPadding && styles.contentContainerScrolledPadding,
+                      ]
+                      : [styles.contentContainer, addPadding && styles.contentContainerPadding]
+                  }
+                >
                   {children}
                 </View>
                 {onOk != null && onCancel != null ? (
@@ -95,11 +111,13 @@ const styles = StyleSheet.create({
   modalContainer: {
     marginHorizontal: 16,
     marginVertical: 106,
-    paddingTop: 24,
     minWidth: 280,
     borderRadius: 2,
     elevation: 24,
     overflow: 'hidden',
+  },
+  modalContainerPadding: {
+    paddingTop: 24,
   },
   titleContainer: {
     paddingHorizontal: 24,
@@ -130,12 +148,16 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: -1,
+  },
+  contentContainerPadding: {
     paddingHorizontal: 24,
     paddingBottom: 24,
   },
   contentContainerScrolled: {
     flex: -1,
     maxHeight: height - 264, // (106px vertical margin * 2) + 52px
+  },
+  contentContainerScrolledPadding: {
     paddingHorizontal: 24,
   },
   actionsContainer: {
@@ -188,6 +210,7 @@ MaterialDialog.propTypes = {
   backgroundColor: PropTypes.string,
   colorAccent: PropTypes.string,
   scrolled: PropTypes.bool,
+  addPadding: PropTypes.bool,
 };
 
 MaterialDialog.defaultProps = {
@@ -198,6 +221,7 @@ MaterialDialog.defaultProps = {
   backgroundColor: colors.background,
   colorAccent: colors.androidColorAccent,
   scrolled: false,
+  addPadding: true,
   onOk: undefined,
   onCancel: undefined,
 };

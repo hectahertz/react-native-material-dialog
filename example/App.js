@@ -8,12 +8,15 @@ import {
   TouchableOpacity,
   ScrollView,
   Platform,
+  Image,
 } from 'react-native';
 import {
   MaterialDialog,
   MultiPickerMaterialDialog,
   SinglePickerMaterialDialog,
 } from 'react-native-material-dialog';
+
+const map = require('./map.jpg');
 
 export default class MaterialDialogExample extends Component {
   state = {
@@ -23,6 +26,7 @@ export default class MaterialDialogExample extends Component {
     basicCustomLabelsVisible: false,
     basicCustomColorsVisible: false,
     basicScrolledListVisible: false,
+    basicMapVisible: false,
     multiPickerVisible: false,
     multiPickerSelectedItems: [],
     scrolledMultiPickerVisible: false,
@@ -80,6 +84,12 @@ export default class MaterialDialogExample extends Component {
               <TouchableOpacity onPress={() => this.setState({ basicScrolledListVisible: true })}>
                 <View style={styles.button}>
                   <Text style={styles.buttonText}>SCROLLED WITH A CUSTOM LIST</Text>
+                </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity onPress={() => this.setState({ basicMapVisible: true })}>
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>CUSTOM CONTENT</Text>
                 </View>
               </TouchableOpacity>
             </View>
@@ -235,6 +245,20 @@ export default class MaterialDialogExample extends Component {
               </TouchableOpacity>
             ))}
           </ScrollView>
+        </MaterialDialog>
+
+        <MaterialDialog
+          visible={this.state.basicMapVisible}
+          addPadding={false}
+          title={'Location list'}
+          onOk={() => {
+            this.setState({ basicMapVisible: false });
+          }}
+          onCancel={() => {
+            this.setState({ basicMapVisible: false });
+          }}
+        >
+          <Image style={styles.mapView} source={map} />
         </MaterialDialog>
 
         <MultiPickerMaterialDialog
@@ -414,6 +438,10 @@ const styles = StyleSheet.create({
     color: 'rgba(0, 0, 0, 0.54)',
     fontSize: 14,
     marginTop: 8,
+  },
+  mapView: {
+    height: 200,
+    width: 280,
   },
 });
 
