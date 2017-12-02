@@ -85,6 +85,7 @@ import { MaterialDialog } from 'react-native-material-dialog';
 | backgroundColor | color of the dialog background                                     | '#FFFFFF'             | string  |
 | colorAccent     | color of the action text                                           | '#51BC78'             | string  |
 | scrolled        | whether the form is in scrolled mode                               | false                 | bool    |
+| addPadding      | automatically add paddings to the content                          | true                  | bool    |
 
 ## SinglePickerMaterialDialog
 
