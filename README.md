@@ -1,4 +1,5 @@
 # react-native-material-dialog
+
 [![npm](https://img.shields.io/npm/dm/localeval.svg)](https://github.com/hectahertz/react-native-material-dialog)
 [![npm](https://img.shields.io/npm/dt/express.svg)](https://github.com/hectahertz/react-native-material-dialog)
 [![npm](https://img.shields.io/npm/v/npm.svg)](https://npmjs.org/package/react-native-material-dialog)
@@ -6,24 +7,23 @@
 
 Material design compliant dialog components for React Native.
 
-Includes an generic dialog that can contain any view and several pre-styled scenarios.
+Includes an generic dialog that can contain any view and several pre-styled
+scenarios.
 
 ![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/ios1.png)
 ![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/7.png)
 
 Javascript-only, uses react-native's Modal component.
 
-Follows the [Material Design dialog specification](https://material.io/guidelines/components/dialogs.html).
+Follows the
+[Material Design dialog specification](https://material.io/guidelines/components/dialogs.html).
 
-## Installation
+## Getting started
 
 #### Step 1
 
-Install react-native-vector-icons (if you do not already have it)
-
-`npm i react-native-vector-icons --save && react-native link react-native-vector-icons`
-
-*If you have any issues with icons not working or installation of React Native Vector Icons, check out their installation guide [here](https://github.com/oblador/react-native-vector-icons#installation)*
+If you're not using Expo, install
+[react-native-vector-icons](https://github.com/oblador/react-native-vector-icons#installation)
 
 #### Step 2
 
@@ -31,18 +31,23 @@ Install react-native-material-dialog
 
 `npm install react-native-material-dialog --save`
 
+## Example
+
+* Run the example app
+  [via Expo](https://exp.host/@hectahertz/react-native-material-dialog-example)
+  or [check the code](example/App.js).
+
 ## Included components
-- [x] [MaterialDialog](https://github.com/hectahertz/react-native-material-dialog#materialdialog)
-- [x] [SinglePickerMaterialDialog](https://github.com/hectahertz/react-native-material-dialog#singlepickermaterialdialog)
-- [x] [MultiPickerMaterialDialog](https://github.com/hectahertz/react-native-material-dialog#multipickermaterialdialog)
+
+* [x] [MaterialDialog](https://github.com/hectahertz/react-native-material-dialog#materialdialog)
+* [x] [SinglePickerMaterialDialog](https://github.com/hectahertz/react-native-material-dialog#singlepickermaterialdialog)
+* [x] [MultiPickerMaterialDialog](https://github.com/hectahertz/react-native-material-dialog#multipickermaterialdialog)
 
 ## Roadmap
-- [ ] Support for stacked action buttons.
-- [ ] Dialog that holds a slider.
-- [ ] Simple dialog component that accepts a string as content and styles it.
 
-## More examples
-See [example/App.js](example/App.js)
+* [ ] Support for stacked action buttons.
+* [ ] Dialog that holds a slider.
+* [ ] Simple dialog component that accepts a string as content and styles it.
 
 ## MaterialDialog
 
@@ -56,29 +61,30 @@ import { MaterialDialog } from 'react-native-material-dialog';
 <MaterialDialog
   title="Use Google's Location Service?"
   visible={this.state.visible}
-  onOk={() => this.setState({visible: false})}
-  onCancel={() => this.setState({visible: false})}>
+  onOk={() => this.setState({ visible: false })}
+  onCancel={() => this.setState({ visible: false })}>
   <Text style={styles.dialogText}>
-    Let Google help apps determine location. This means sending anonymous location
-    data to Google, even when no apps are running.
+    Let Google help apps determine location. This means sending anonymous
+    location data to Google, even when no apps are running.
   </Text>
-</MaterialDialog>
+</MaterialDialog>;
 ```
 
 ## Props
- Name | Description | Default/Required | Type
-------|-------------|----------|-----------
-visible | shows or hides the dialog | required | bool
-children | element to be rendered in the content of the dialog | required | element
-onCancel | callback when the dialog is closed or the cancel action is pressed | required | func
-onOk | callback when the ok action is pressed | undefined | func
-cancelLabel | label for the cancel action | 'CANCEL' | string
-okLabel | label for the ok action | 'OK' | string
-title | text for the dialog title | undefined | string
-titleColor | color of the dialog title | 'rgba(0, 0, 0, 0.87)' | string
-backgroundColor | color of the dialog background | '#FFFFFF' | string
-colorAccent | color of the action text | '#51BC78' | string
-scrolled | whether the form is in scrolled mode | false | bool
+
+| Name            | Description                                                        | Default/Required      | Type    |
+| --------------- | ------------------------------------------------------------------ | --------------------- | ------- |
+| visible         | shows or hides the dialog                                          | required              | bool    |
+| children        | element to be rendered in the content of the dialog                | required              | element |
+| onCancel        | callback when the dialog is closed or the cancel action is pressed | required              | func    |
+| onOk            | callback when the ok action is pressed                             | undefined             | func    |
+| cancelLabel     | label for the cancel action                                        | 'CANCEL'              | string  |
+| okLabel         | label for the ok action                                            | 'OK'                  | string  |
+| title           | text for the dialog title                                          | undefined             | string  |
+| titleColor      | color of the dialog title                                          | 'rgba(0, 0, 0, 0.87)' | string  |
+| backgroundColor | color of the dialog background                                     | '#FFFFFF'             | string  |
+| colorAccent     | color of the action text                                           | '#51BC78'             | string  |
+| scrolled        | whether the form is in scrolled mode                               | false                 | bool    |
 
 ## SinglePickerMaterialDialog
 
@@ -95,27 +101,29 @@ import { SinglePickerMaterialDialog } from 'react-native-material-dialog';
   visible={this.state.singlePickerVisible}
   selectedItem={this.state.singlePickerSelectedItem}
   onCancel={() => this.setState({ singlePickerVisible: false })}
-  onOk={(result) => {
+  onOk={result => {
     this.setState({ singlePickerVisible: false });
     this.setState({ singlePickerSelectedItem: result.selectedItem });
-  }} />
+  }}
+/>;
 ```
 
 ## Props
- Name | Description | Default/Required | Type
-------|-------------|----------|-----------
-visible | shows or hides the dialog | required | bool
-items | list of options to choose from | required | array of objects with a 'label' and 'value' property
-selectedItem | item that will be selected when opening the dialog | required | object with a 'label' and 'value' property
-onCancel | callback when the dialog is closed or the cancel action is pressed | required | func
-onOk | callback when the ok action is pressed | undefined | func
-cancelLabel | label for the cancel action | 'CANCEL' | string
-okLabel | label for the ok action | 'OK' | string
-title | text for the dialog title | undefined | string
-titleColor | color of the dialog title | 'rgba(0, 0, 0, 0.87)' | string
-backgroundColor | color of the dialog background | '#FFFFFF' | string
-colorAccent | color of the action text | '#51BC78' | string
-scrolled | whether the form is in scrolled mode | false | bool
+
+| Name            | Description                                                        | Default/Required      | Type                                                 |
+| --------------- | ------------------------------------------------------------------ | --------------------- | ---------------------------------------------------- |
+| visible         | shows or hides the dialog                                          | required              | bool                                                 |
+| items           | list of options to choose from                                     | required              | array of objects with a 'label' and 'value' property |
+| selectedItem    | item that will be selected when opening the dialog                 | required              | object with a 'label' and 'value' property           |
+| onCancel        | callback when the dialog is closed or the cancel action is pressed | required              | func                                                 |
+| onOk            | callback when the ok action is pressed                             | undefined             | func                                                 |
+| cancelLabel     | label for the cancel action                                        | 'CANCEL'              | string                                               |
+| okLabel         | label for the ok action                                            | 'OK'                  | string                                               |
+| title           | text for the dialog title                                          | undefined             | string                                               |
+| titleColor      | color of the dialog title                                          | 'rgba(0, 0, 0, 0.87)' | string                                               |
+| backgroundColor | color of the dialog background                                     | '#FFFFFF'             | string                                               |
+| colorAccent     | color of the action text                                           | '#51BC78'             | string                                               |
+| scrolled        | whether the form is in scrolled mode                               | false                 | bool                                                 |
 
 ## MultiPickerMaterialDialog
 
@@ -127,37 +135,40 @@ Ready to use dialog that allows to choose several options from a list.
 import { MultiPickerMaterialDialog } from 'react-native-material-dialog';
 
 <MultiPickerMaterialDialog
-  title={"Pick some elements!"}
+  title={'Pick some elements!'}
   colorAccent={this.props.colorAccent}
   items={LIST.map((row, index) => {
-    return {value: index, label: row}
+    return { value: index, label: row };
   })}
   visible={this.state.multiPickerVisible}
   selectedItems={this.state.multiPickerSelectedItems}
-  onCancel={() => this.setState({multiPickerVisible: false})}
-  onOk={(result) => {
-    this.setState({multiPickerVisible: false});
-    this.setState({multiPickerSelectedItems: result.selectedItems});
-  }}/>
+  onCancel={() => this.setState({ multiPickerVisible: false })}
+  onOk={result => {
+    this.setState({ multiPickerVisible: false });
+    this.setState({ multiPickerSelectedItems: result.selectedItems });
+  }}
+/>;
 ```
 
 ## Props
- Name | Description | Default/Required | Type
-------|-------------|----------|-----------
-visible | shows or hides the dialog | required | bool
-items | list of options to choose from | required | array of objects with a 'label' and 'value' property
-selectedItems | items that will be selected when opening the dialog | required | array of objects with a 'label' and 'value' property
-onCancel | callback when the dialog is closed or the cancel action is pressed | required | func
-onOk | callback when the ok action is pressed | undefined | func
-cancelLabel | label for the cancel action | 'CANCEL' | string
-okLabel | label for the ok action | 'OK' | string
-title | text for the dialog title | undefined | string
-titleColor | color of the dialog title | 'rgba(0, 0, 0, 0.87)' | string
-backgroundColor | color of the dialog background | '#FFFFFF' | string
-colorAccent | color of the action text | '#51BC78' | string
-scrolled | whether the form is in scrolled mode | false | bool
+
+| Name            | Description                                                        | Default/Required      | Type                                                 |
+| --------------- | ------------------------------------------------------------------ | --------------------- | ---------------------------------------------------- |
+| visible         | shows or hides the dialog                                          | required              | bool                                                 |
+| items           | list of options to choose from                                     | required              | array of objects with a 'label' and 'value' property |
+| selectedItems   | items that will be selected when opening the dialog                | required              | array of objects with a 'label' and 'value' property |
+| onCancel        | callback when the dialog is closed or the cancel action is pressed | required              | func                                                 |
+| onOk            | callback when the ok action is pressed                             | undefined             | func                                                 |
+| cancelLabel     | label for the cancel action                                        | 'CANCEL'              | string                                               |
+| okLabel         | label for the ok action                                            | 'OK'                  | string                                               |
+| title           | text for the dialog title                                          | undefined             | string                                               |
+| titleColor      | color of the dialog title                                          | 'rgba(0, 0, 0, 0.87)' | string                                               |
+| backgroundColor | color of the dialog background                                     | '#FFFFFF'             | string                                               |
+| colorAccent     | color of the action text                                           | '#51BC78'             | string                                               |
+| scrolled        | whether the form is in scrolled mode                               | false                 | bool                                                 |
 
 ## License
-- [MIT](LICENSE)
+
+* [MIT](LICENSE)
 
 [![NPM](https://nodei.co/npm/react-native-material-dialog.png)](https://npmjs.org/package/react-native-material-dialog)
