@@ -1,22 +1,16 @@
-# react-native-material-dialog
+# <img alt="React Native Material Dialog" src="images/logo.png" width="412"/>
 
-[![npm](https://img.shields.io/npm/dm/localeval.svg)](https://github.com/hectahertz/react-native-material-dialog)
-[![npm](https://img.shields.io/npm/dt/express.svg)](https://github.com/hectahertz/react-native-material-dialog)
-[![npm](https://img.shields.io/npm/v/npm.svg)](https://npmjs.org/package/react-native-material-dialog)
-[![npm](https://img.shields.io/npm/l/react-native-smart-badge.svg)](https://github.com/hectahertz/react-native-material-dialog/blob/master/LICENSE)
+[![npm version](https://img.shields.io/npm/v/react-native-material-dialog.svg)](https://www.npmjs.com/package/react-native-material-dialog)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![npm downloads](https://img.shields.io/npm/dm/react-native-material-dialog.svg)](https://www.npmjs.com/package/react-native-material-dialog)
 
-Material design compliant dialog components for React Native.
+Material design dialog components for React Native. JavaScript-only, for iOS and
+Android.
 
-Includes an generic dialog that can contain any view and several pre-styled
-scenarios.
-
-![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/ios1.png)
-![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/7.png)
-
-Javascript-only, uses react-native's Modal component.
-
-Follows the
-[Material Design dialog specification](https://material.io/guidelines/components/dialogs.html).
+<p align="center">
+<img alt="React Native Material Dialog iOS Showcase" src="images/ios.png" width="49.7%"/>
+<img alt="React Native Material Dialog Android Showcase" src="images/android.png" width="49.7%"/>
+</p>
 
 ## Getting started
 
@@ -53,7 +47,7 @@ Install react-native-material-dialog
 
 Basic and customizable dialog that can hold any component.
 
-![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/dialog.gif)
+<img alt="Material Design Collection" src="images/dialog.gif"/>
 
 ```jsx
 import { MaterialDialog } from 'react-native-material-dialog';
@@ -91,7 +85,7 @@ import { MaterialDialog } from 'react-native-material-dialog';
 
 Ready to use dialog that allows to choose only one option from a list.
 
-![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/singlepicker.gif)
+<img alt="Material Design Collection" src="images/singlepicker.gif"/>
 
 ```jsx
 import { SinglePickerMaterialDialog } from 'react-native-material-dialog';
@@ -130,7 +124,7 @@ import { SinglePickerMaterialDialog } from 'react-native-material-dialog';
 
 Ready to use dialog that allows to choose several options from a list.
 
-![](https://raw.githubusercontent.com/hectahertz/react-native-material-dialog/master/screenshots/multipicker.gif)
+<img alt="Material Design Collection" src="images/multipicker.gif"/>
 
 ```jsx
 import { MultiPickerMaterialDialog } from 'react-native-material-dialog';
@@ -168,8 +162,14 @@ import { MultiPickerMaterialDialog } from 'react-native-material-dialog';
 | colorAccent     | color of the action text                                           | '#51BC78'             | string                                               |
 | scrolled        | whether the form is in scrolled mode                               | false                 | bool                                                 |
 
+## References
+
+* https://material.io/guidelines/components/dialogs.html
+
 ## License
 
 * [MIT](LICENSE)
 
-[![NPM](https://nodei.co/npm/react-native-material-dialog.png)](https://npmjs.org/package/react-native-material-dialog)
+## Contact
+
+[Tweet me @hectahertz](https://twitter.com/hectahertz)
