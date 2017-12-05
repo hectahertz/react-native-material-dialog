@@ -79,16 +79,23 @@ const MaterialDialog = ({
                 >
                   {children}
                 </View>
-                {onOk != null && onCancel != null ? (
+                {onOk != null || onCancel != null ? (
                   <View
-                    style={scrolled ? styles.actionsContainerScrolled : styles.actionsContainer}
-                  >
+                    style={scrolled ? styles.actionsContainerScrolled : styles.actionsContainer}>
+
                     <ActionButton
                       colorAccent={colorAccent}
                       onPress={onCancel}
                       label={cancelLabel}
                     />
-                    <ActionButton colorAccent={colorAccent} onPress={onOk} label={okLabel} />
+
+                    {onOk != null ? (
+                      <ActionButton
+                        colorAccent={colorAccent}
+                        onPress={onOk}
+                        label={okLabel}
+                      />) : null
+                    }
                   </View>
                 ) : null}
               </View>
