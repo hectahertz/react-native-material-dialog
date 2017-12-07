@@ -49,6 +49,7 @@ const MaterialDialog = ({
     hardwareAccelerated
     visible={visible}
     onRequestClose={onCancel}
+    supportedOrientations={['portrait', 'landscape']}
   >
     <TouchableWithoutFeedback onPress={onCancel}>
       <View style={styles.backgroundOverlay}>
