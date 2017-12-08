@@ -51,7 +51,7 @@ export default class MultiPickerMaterialDialog extends Component {
             size={24}
           />
         </View>
-        <Text style={material.body1}>{row.label}</Text>
+        <Text style={material.subheading}>{row.label}</Text>
       </View>
     </TouchableOpacity>
   );
