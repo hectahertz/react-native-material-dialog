@@ -21,6 +21,7 @@
     "expo": "^23.0.4",
     "react": "16.0.0",
     "react-native": "0.50.3",
-    "react-native-material-dialog": "^0.5.4"
+    "react-native-material-dialog": "^0.5.4",
+    "react-native-typography": "^1.0.3"
   }
 }
