@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, Text, TouchableOpacity, View, ListView, Platform } from 'react-native';
+import { material } from 'react-native-typography';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import MaterialDialog from './MaterialDialog';
 
@@ -50,7 +51,7 @@ export default class MultiPickerMaterialDialog extends Component {
             size={24}
           />
         </View>
-        <Text style={styles.rowText}>{row.label}</Text>
+        <Text style={material.body1}>{row.label}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -97,11 +98,6 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     marginRight: 16,
-  },
-  rowText: {
-    fontFamily: Platform.OS === 'android' ? 'sans-serif' : 'System',
-    color: colors.androidPrimaryTextColor,
-    fontSize: 16,
   },
 });
 

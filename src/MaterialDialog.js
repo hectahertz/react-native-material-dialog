@@ -12,6 +12,7 @@ import {
   Dimensions,
 } from 'react-native';
 import colors from './colors';
+import { material } from 'react-native-typography';
 
 const { height } = Dimensions.get('window');
 
@@ -25,7 +26,7 @@ const ActionButton = ({ onPress, colorAccent, label }) => (
     underlayColor={colors.androidPressedUnderlay}
     onPress={onPress}
   >
-    <Text style={[styles.actionText, { color: colorAccent }]}>{label}</Text>
+    <Text style={[material.button, { color: colorAccent }]}>{label}</Text>
   </TouchableHighlight>
 );
 
@@ -53,43 +54,65 @@ const MaterialDialog = ({
   >
     <TouchableWithoutFeedback onPress={onCancel}>
       <View style={styles.backgroundOverlay}>
-        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : null}>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : null}
+        >
           <View
             style={[
               styles.modalContainer,
-              (title != null || (addPadding && title == null)) && styles.modalContainerPadding,
+              (title != null || (addPadding && title == null)) &&
+                styles.modalContainerPadding,
               { backgroundColor },
             ]}
           >
             <TouchableWithoutFeedback>
               <View>
                 {title != null ? (
-                  <View style={scrolled ? styles.titleContainerScrolled : styles.titleContainer}>
-                    <Text style={[styles.titleText, { color: titleColor }]}>{title}</Text>
+                  <View
+                    style={
+                      scrolled
+                        ? styles.titleContainerScrolled
+                        : styles.titleContainer
+                    }
+                  >
+                    <Text style={[material.title, { color: titleColor }]}>
+                      {title}
+                    </Text>
                   </View>
                 ) : null}
                 <View
                   style={
                     scrolled
                       ? [
-                        styles.contentContainerScrolled,
-                        addPadding && styles.contentContainerScrolledPadding,
-                      ]
-                      : [styles.contentContainer, addPadding && styles.contentContainerPadding]
+                          styles.contentContainerScrolled,
+                          addPadding && styles.contentContainerScrolledPadding,
+                        ]
+                      : [
+                          styles.contentContainer,
+                          addPadding && styles.contentContainerPadding,
+                        ]
                   }
                 >
                   {children}
                 </View>
                 {onOk != null && onCancel != null ? (
                   <View
-                    style={scrolled ? styles.actionsContainerScrolled : styles.actionsContainer}
+                    style={
+                      scrolled
+                        ? styles.actionsContainerScrolled
+                        : styles.actionsContainer
+                    }
                   >
                     <ActionButton
                       colorAccent={colorAccent}
                       onPress={onCancel}
                       label={cancelLabel}
                     />
-                    <ActionButton colorAccent={colorAccent} onPress={onOk} label={okLabel} />
+                    <ActionButton
+                      colorAccent={colorAccent}
+                      onPress={onOk}
+                      label={okLabel}
+                    />
                   </View>
                 ) : null}
               </View>
@@ -136,17 +159,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: colors.androidBorderColor,
   },
-  titleText: {
-    fontSize: 20,
-    ...Platform.select({
-      android: {
-        fontFamily: 'sans-serif-medium',
-      },
-      ios: {
-        fontWeight: '600',
-      },
-    }),
-  },
   contentContainer: {
     flex: -1,
   },
@@ -185,17 +197,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  actionText: {
-    fontSize: 14,
-    ...Platform.select({
-      android: {
-        fontFamily: 'sans-serif-medium',
-      },
-      ios: {
-        fontWeight: '600',
-      },
-    }),
   },
 });
 
