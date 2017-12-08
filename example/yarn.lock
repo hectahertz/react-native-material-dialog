@@ -4531,9 +4531,9 @@ react-native-maps@0.17.1:
   version "0.17.1"
   resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.17.1.tgz#ab2236341fd984dac8864202ae55331bc262f60c"
 
-react-native-material-dialog@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/react-native-material-dialog/-/react-native-material-dialog-0.7.0.tgz#7eb7c926fafd2a4bfff6f0a03b9c5878b9f1bcbd"
+react-native-material-dialog@^0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/react-native-material-dialog/-/react-native-material-dialog-0.7.1.tgz#b11ab4d123dfc28d97f6f7eff03d53c348b51d9e"
   dependencies:
     prop-types "^15.5.10"
     react-native-typography "^1.0.3"
