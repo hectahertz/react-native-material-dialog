@@ -23,6 +23,7 @@
   ],
   "dependencies": {
     "prop-types": "^15.5.10",
+    "react-native-typography": "^1.0.3",
     "react-native-vector-icons": "^4.2.0"
   },
   "devDependencies": {
