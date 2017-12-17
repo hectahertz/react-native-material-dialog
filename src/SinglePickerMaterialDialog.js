@@ -124,8 +124,8 @@ SinglePickerMaterialDialog.propTypes = {
   visible: PropTypes.bool.isRequired,
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
   selectedItem: PropTypes.shape({
-    value: PropTypes.object,
-    label: PropTypes.string,
+    value: PropTypes.any.isRequired,
+    label: PropTypes.string.isRequired,
   }),
   title: PropTypes.string,
   titleColor: PropTypes.string,
