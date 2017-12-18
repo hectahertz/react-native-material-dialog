@@ -137,6 +137,6 @@ interface MultiPickerMaterialDialogStatic extends Dialog {
     selectedItems: PickerItem[]
 }
 
-export class MaterialDialog extends React.Component<MaterialDialogStatic, null> {} 
-export class SinglePickerMaterialDialog extends React.Component<SinglePickerMaterialDialogStatic, null> {}
-export class MultiPickerMaterialDialog extends React.Component<MultiPickerMaterialDialogStatic, null> {}
+export class MaterialDialog extends React.Component<MaterialDialogStatic> {} 
+export class SinglePickerMaterialDialog extends React.Component<SinglePickerMaterialDialogStatic> {}
+export class MultiPickerMaterialDialog extends React.Component<MultiPickerMaterialDialogStatic> {}
