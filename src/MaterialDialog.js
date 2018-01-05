@@ -20,8 +20,9 @@ const { height } = Dimensions.get('window');
 // TODO: Support custom actions
 // TODO: Stacked full-width buttons
 
-const ActionButton = ({ onPress, colorAccent, label }) => (
+const ActionButton = ({ testID, onPress, colorAccent, label }) => (
   <TouchableHighlight
+    testID={testID}
     style={styles.actionContainer}
     underlayColor={colors.androidPressedUnderlay}
     onPress={onPress}
@@ -54,61 +55,45 @@ const MaterialDialog = ({
   >
     <TouchableWithoutFeedback onPress={onCancel}>
       <View style={styles.backgroundOverlay}>
-        <KeyboardAvoidingView
-          behavior={Platform.OS === 'ios' ? 'padding' : null}
-        >
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : null}>
           <View
             style={[
               styles.modalContainer,
-              (title != null || (addPadding && title == null)) &&
-                styles.modalContainerPadding,
+              (title != null || (addPadding && title == null)) && styles.modalContainerPadding,
               { backgroundColor },
             ]}
           >
             <TouchableWithoutFeedback>
               <View>
                 {title != null ? (
-                  <View
-                    style={
-                      scrolled
-                        ? styles.titleContainerScrolled
-                        : styles.titleContainer
-                    }
-                  >
-                    <Text style={[material.title, { color: titleColor }]}>
-                      {title}
-                    </Text>
+                  <View style={scrolled ? styles.titleContainerScrolled : styles.titleContainer}>
+                    <Text style={[material.title, { color: titleColor }]}>{title}</Text>
                   </View>
                 ) : null}
                 <View
                   style={
                     scrolled
                       ? [
-                          styles.contentContainerScrolled,
-                          addPadding && styles.contentContainerScrolledPadding,
-                        ]
-                      : [
-                          styles.contentContainer,
-                          addPadding && styles.contentContainerPadding,
-                        ]
+                        styles.contentContainerScrolled,
+                        addPadding && styles.contentContainerScrolledPadding,
+                      ]
+                      : [styles.contentContainer, addPadding && styles.contentContainerPadding]
                   }
                 >
                   {children}
                 </View>
                 {onOk != null && onCancel != null ? (
                   <View
-                    style={
-                      scrolled
-                        ? styles.actionsContainerScrolled
-                        : styles.actionsContainer
-                    }
+                    style={scrolled ? styles.actionsContainerScrolled : styles.actionsContainer}
                   >
                     <ActionButton
+                      testID="dialog-cancel-button"
                       colorAccent={colorAccent}
                       onPress={onCancel}
                       label={cancelLabel}
                     />
                     <ActionButton
+                      testID="dialog-ok-button"
                       colorAccent={colorAccent}
                       onPress={onOk}
                       label={okLabel}
@@ -229,6 +214,7 @@ MaterialDialog.defaultProps = {
 };
 
 ActionButton.propTypes = {
+  testID: PropTypes.string.isRequired,
   colorAccent: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
