@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, TouchableOpacity, View, ListView, Platform } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  FlatList,
+} from 'react-native';
 import { material } from 'react-native-typography';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import MaterialDialog from './MaterialDialog';
@@ -13,72 +19,40 @@ export default class SinglePickerMaterialDialog extends Component {
 
     const { items, selectedItem } = props;
 
-    const rows = items.map(item => Object.assign({}, item, { selected: false }));
-
     let selectedIndex;
     if (selectedItem != null) {
-      selectedIndex = rows.findIndex(item => item.value === selectedItem.value);
-
-      rows[selectedIndex] = Object.assign({}, rows[selectedIndex], {
-        selected: true,
-      });
+      selectedIndex = items.findIndex(
+        item => item.value === selectedItem.value,
+      );
     }
-
-    const dataSource = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1.value !== r2.value || r1.selected !== r2.selected,
-    }).cloneWithRows(rows);
-
-    this.state = { dataSource, rows, selectedIndex };
+    this.state = { selectedIndex };
   }
 
-  // TODO: Extract common logic with the constructor
-  // Refreshing the dataSource when we refresh any prop (such as visible)
-  componentWillReceiveProps(nextProps) {
-    const { items, selectedItem } = nextProps;
-
-    const rows = items.map(item => Object.assign({}, item, { selected: false }));
-
-    let selectedIndex;
-    if (selectedItem != null) {
-      selectedIndex = rows.findIndex(item => item.value === selectedItem.value);
-
-      rows[selectedIndex] = Object.assign({}, rows[selectedIndex], {
-        selected: true,
-      });
-    }
-
-    const dataSource = this.state.dataSource.cloneWithRows(rows);
-
-    this.setState({ dataSource, rows, selectedIndex });
+  onPressItem(value) {
+    const { items } = this.props;
+    this.setState(() => {
+      const selectedIndex = items.findIndex(item => item.value === value);
+      return { selectedIndex };
+    });
   }
 
-  onRowPress(rowID) {
-    const rows = [...this.state.rows];
-    const { selectedIndex } = this.state;
+  keyExtractor = item => String(item.value);
 
-    if (selectedIndex != null) {
-      rows[selectedIndex] = Object.assign({}, rows[selectedIndex], {
-        selected: false,
-      });
-    }
-    rows[rowID] = Object.assign({}, rows[rowID], { selected: true });
-
-    const dataSource = this.state.dataSource.cloneWithRows(rows);
-
-    this.setState({ dataSource, rows, selectedIndex: rowID });
-  }
-
-  renderRow = (row, sectionID, rowID) => (
-    <TouchableOpacity key={row.value} onPress={() => this.onRowPress(rowID)}>
+  renderItem = ({ item, index }) => (
+    <TouchableOpacity onPress={() => this.onPressItem(item.value)}>
       <View style={styles.rowContainer}>
         <View style={styles.iconContainer}>
           <Icon
-            name={row.selected ? 'radio-button-checked' : 'radio-button-unchecked'}
+            name={
+              index === this.state.selectedIndex
+                ? 'radio-button-checked'
+                : 'radio-button-unchecked'
+            }
             color={this.props.colorAccent}
             size={24}
           />
         </View>
-        <Text style={material.subheading}>{row.label}</Text>
+        <Text style={material.subheading}>{item.label}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -94,14 +68,20 @@ export default class SinglePickerMaterialDialog extends Component {
         scrolled={this.props.scrolled}
         onOk={() =>
           this.props.onOk({
-            selectedItem: this.state.rows[this.state.selectedIndex],
-          })}
+            selectedItem: this.props.items[this.state.selectedIndex],
+          })
+        }
         cancelLabel={this.props.cancelLabel}
         onCancel={() => {
           this.props.onCancel();
         }}
       >
-        <ListView dataSource={this.state.dataSource} renderRow={this.renderRow} />
+        <FlatList
+          data={this.props.items}
+          extraData={this.state}
+          renderItem={this.renderItem}
+          keyExtractor={this.keyExtractor}
+        />
       </MaterialDialog>
     );
   }
