@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, TouchableOpacity, View, ListView, Platform } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  FlatList,
+} from 'react-native';
 import { material } from 'react-native-typography';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import MaterialDialog from './MaterialDialog';
@@ -11,47 +17,40 @@ export default class MultiPickerMaterialDialog extends Component {
   constructor(props) {
     super(props);
 
-    const { items, selectedItems } = props;
-    const rows = buildSelectedRows(items, selectedItems);
-
-    const dataSource = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1.value !== r2.value || r1.selected !== r2.selected,
-    }).cloneWithRows(rows);
-
-    this.state = {
-      dataSource,
-      rows,
-    };
-  }
-
-  // Refreshing the dataSource when we refresh any prop (such as visible)
-  componentWillReceiveProps(nextProps) {
-    const { items, selectedItems } = nextProps;
-    const rows = buildSelectedRows(items, selectedItems);
-    const dataSource = this.state.dataSource.cloneWithRows(rows);
-    this.setState({ dataSource, rows });
-  }
-
-  onRowPress(rowID) {
-    const rows = [...this.state.rows];
-    rows[rowID] = Object.assign({}, rows[rowID], {
-      selected: !rows[rowID].selected,
+    const { selectedItems } = props;
+    const selected = new Map();
+    selectedItems.forEach((item) => {
+      selected.set(item.value, true);
     });
-    const dataSource = this.state.dataSource.cloneWithRows(rows);
-    this.setState({ dataSource, rows });
+
+    this.state = { selected };
   }
 
-  renderRow = (row, sectionID, rowID) => (
-    <TouchableOpacity key={row.value} onPress={() => this.onRowPress(rowID)}>
+  onPressItem(value) {
+    this.setState((prevState) => {
+      const selected = new Map(prevState.selected);
+      selected.set(value, !selected.get(value));
+      return { selected };
+    });
+  }
+
+  keyExtractor = item => String(item.value);
+
+  renderItem = ({ item }) => (
+    <TouchableOpacity onPress={() => this.onPressItem(item.value)}>
       <View style={styles.rowContainer}>
         <View style={styles.iconContainer}>
           <Icon
-            name={row.selected ? 'check-box' : 'check-box-outline-blank'}
+            name={
+              this.state.selected.get(item.value)
+                ? 'check-box'
+                : 'check-box-outline-blank'
+            }
             color={this.props.colorAccent}
             size={24}
           />
         </View>
-        <Text style={material.subheading}>{row.label}</Text>
+        <Text style={material.subheading}>{item.label}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -67,25 +66,23 @@ export default class MultiPickerMaterialDialog extends Component {
         scrolled={this.props.scrolled}
         onOk={() =>
           this.props.onOk({
-            selectedItems: this.state.rows.filter(row => row.selected),
-          })}
+            selectedItems: this.props.items.filter(item =>
+              this.state.selected.get(item.value),
+            ),
+          })
+        }
         cancelLabel={this.props.cancelLabel}
         onCancel={this.props.onCancel}
       >
-        <ListView dataSource={this.state.dataSource} renderRow={this.renderRow} />
+        <FlatList
+          data={this.props.items}
+          extraData={this.state}
+          renderItem={this.renderItem}
+          keyExtractor={this.keyExtractor}
+        />
       </MaterialDialog>
     );
   }
-}
-
-function buildSelectedRows(items, selectedItems) {
-  const rows = items.map(item =>
-    Object.assign({}, item, {
-      selected: selectedItems.some(i => i.value === item.value),
-    }),
-  );
-
-  return rows;
 }
 
 const styles = StyleSheet.create({
