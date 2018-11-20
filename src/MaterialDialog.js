@@ -44,8 +44,12 @@ const MaterialDialog = ({
   okLabel,
   cancelLabel,
   children,
+  onShow,
+  onDismiss,
+  ...other
 }) => (
   <Modal
+    {...other}
     animationType={'fade'}
     transparent
     hardwareAccelerated
@@ -198,6 +202,8 @@ MaterialDialog.propTypes = {
   colorAccent: PropTypes.string,
   scrolled: PropTypes.bool,
   addPadding: PropTypes.bool,
+  onShow: PropTypes.func,
+  onDismiss: PropTypes.func,
 };
 
 MaterialDialog.defaultProps = {
@@ -211,6 +217,8 @@ MaterialDialog.defaultProps = {
   addPadding: true,
   onOk: undefined,
   onCancel: undefined,
+  onShow: undefined,
+  onDismiss: undefined,
 };
 
 ActionButton.propTypes = {
