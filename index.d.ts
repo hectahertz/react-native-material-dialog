@@ -91,6 +91,9 @@ interface Dialog {
      * @param selected
      */
     onCancel?(selected: SelectedItem): void
+
+    onShow?(): void
+    onDismiss?(): void
 }
 
 interface MaterialDialogStatic extends Dialog {
