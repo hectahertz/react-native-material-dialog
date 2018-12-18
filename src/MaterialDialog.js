@@ -44,6 +44,7 @@ const MaterialDialog = ({
   okLabel,
   cancelLabel,
   children,
+  style,
 }) => (
   <Modal
     animationType={'fade'}
@@ -61,13 +62,14 @@ const MaterialDialog = ({
               styles.modalContainer,
               (title != null || (addPadding && title == null)) && styles.modalContainerPadding,
               { backgroundColor },
+              style.modalContainer
             ]}
           >
             <TouchableWithoutFeedback>
               <View>
                 {title != null ? (
                   <View style={scrolled ? styles.titleContainerScrolled : styles.titleContainer}>
-                    <Text style={[material.title, { color: titleColor }]}>{title}</Text>
+                    <Text style={[material.title, { color: titleColor }, style.title]}>{title}</Text>
                   </View>
                 ) : null}
                 <View
@@ -198,6 +200,10 @@ MaterialDialog.propTypes = {
   colorAccent: PropTypes.string,
   scrolled: PropTypes.bool,
   addPadding: PropTypes.bool,
+  style: PropTypes.shape({
+    modalContainer: PropTypes.style,
+    title: Text.propTypes.style, // eslint-disable-line
+  }),
 };
 
 MaterialDialog.defaultProps = {
@@ -211,6 +217,7 @@ MaterialDialog.defaultProps = {
   addPadding: true,
   onOk: undefined,
   onCancel: undefined,
+  style: {},
 };
 
 ActionButton.propTypes = {
