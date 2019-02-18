@@ -156,7 +156,6 @@ const styles = StyleSheet.create({
     maxHeight: height - 264, // (106px vertical margin * 2) + 52px
   },
   contentContainerScrolledPadding: {
-    paddingHorizontal: 24,
   },
   actionsContainer: {
     height: 52,
