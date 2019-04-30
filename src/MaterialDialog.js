@@ -44,6 +44,7 @@ const MaterialDialog = ({
   okLabel,
   cancelLabel,
   children,
+  cancelOnClickOutside
 }) => (
   <Modal
     animationType={'fade'}
@@ -53,7 +54,7 @@ const MaterialDialog = ({
     onRequestClose={onCancel}
     supportedOrientations={['portrait', 'landscape']}
   >
-    <TouchableWithoutFeedback onPress={onCancel}>
+    <TouchableWithoutFeedback onPress={cancelOnClickOutside ? onCancel : () => {}}>
       <View style={styles.backgroundOverlay}>
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : null}>
           <View
@@ -198,6 +199,7 @@ MaterialDialog.propTypes = {
   colorAccent: PropTypes.string,
   scrolled: PropTypes.bool,
   addPadding: PropTypes.bool,
+  cancelOnClickOutside: PropTypes.bool,
 };
 
 MaterialDialog.defaultProps = {
@@ -211,6 +213,7 @@ MaterialDialog.defaultProps = {
   addPadding: true,
   onOk: undefined,
   onCancel: undefined,
+  cancelOnClickOutside: true
 };
 
 ActionButton.propTypes = {
