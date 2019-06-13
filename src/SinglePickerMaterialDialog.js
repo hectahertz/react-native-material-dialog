@@ -92,6 +92,7 @@ export default class SinglePickerMaterialDialog extends Component {
         visible={this.props.visible}
         okLabel={this.props.okLabel}
         scrolled={this.props.scrolled}
+        backgroundColor{this.props.backgroundColor}
         onOk={() =>
           this.props.onOk({
             selectedItem: this.state.rows[this.state.selectedIndex],
