@@ -78,7 +78,7 @@ export default class SinglePickerMaterialDialog extends Component {
             size={24}
           />
         </View>
-        <Text style={material.subheading}>{row.label}</Text>
+        <Text style={[material.subheading,{color: this.props.itemColor}]}>{row.label}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -92,6 +92,8 @@ export default class SinglePickerMaterialDialog extends Component {
         visible={this.props.visible}
         okLabel={this.props.okLabel}
         scrolled={this.props.scrolled}
+        backgroundColor={this.props.backgroundColor}
+        itemColor = {this.props.itemColor}
         onOk={() =>
           this.props.onOk({
             selectedItem: this.state.rows[this.state.selectedIndex],
