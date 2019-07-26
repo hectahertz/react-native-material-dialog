@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, TouchableOpacity, View, ListView, Platform } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, FlatList, Platform } from 'react-native';
 import { material } from 'react-native-typography';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import MaterialDialog from './MaterialDialog';
-
 import colors from './colors';
 
 export default class SinglePickerMaterialDialog extends Component {
@@ -12,8 +11,7 @@ export default class SinglePickerMaterialDialog extends Component {
     super(props);
 
     const { items, selectedItem } = props;
-
-    const rows = items.map(item => Object.assign({}, item, { selected: false }));
+    const rows = items.map(item => Object.assign({}, item, {selected:false}));
 
     let selectedIndex;
     if (selectedItem != null) {
@@ -23,17 +21,12 @@ export default class SinglePickerMaterialDialog extends Component {
         selected: true,
       });
     }
-
-    const dataSource = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1.value !== r2.value || r1.selected !== r2.selected,
-    }).cloneWithRows(rows);
-
-    this.state = { dataSource, rows, selectedIndex };
+    this.state = { rows, selectedIndex };
   }
 
   // TODO: Extract common logic with the constructor
   // Refreshing the dataSource when we refresh any prop (such as visible)
-  componentWillReceiveProps(nextProps) {
+   componentWillReceiveProps(nextProps) {
     const { items, selectedItem } = nextProps;
 
     const rows = items.map(item => Object.assign({}, item, { selected: false }));
@@ -46,13 +39,10 @@ export default class SinglePickerMaterialDialog extends Component {
         selected: true,
       });
     }
-
-    const dataSource = this.state.dataSource.cloneWithRows(rows);
-
-    this.setState({ dataSource, rows, selectedIndex });
+    this.setState({ rows, selectedIndex });
   }
 
-  onRowPress(rowID) {
+   onRowPress(rowID) {
     const rows = [...this.state.rows];
     const { selectedIndex } = this.state;
 
@@ -62,23 +52,20 @@ export default class SinglePickerMaterialDialog extends Component {
       });
     }
     rows[rowID] = Object.assign({}, rows[rowID], { selected: true });
-
-    const dataSource = this.state.dataSource.cloneWithRows(rows);
-
-    this.setState({ dataSource, rows, selectedIndex: rowID });
+    this.setState({ rows, selectedIndex: rowID });
   }
 
-  renderRow = (row, sectionID, rowID) => (
-    <TouchableOpacity key={row.value} onPress={() => this.onRowPress(rowID)}>
+  renderItem = (row) => (
+    <TouchableOpacity key={row.item.value} onPress={() => this.onRowPress(row.item.value)}>
       <View style={styles.rowContainer}>
         <View style={styles.iconContainer}>
           <Icon
-            name={row.selected ? 'radio-button-checked' : 'radio-button-unchecked'}
+            name={this.state.rows[row.item.value].selected ? 'radio-button-checked' : 'radio-button-unchecked'}
             color={this.props.colorAccent}
             size={24}
           />
         </View>
-        <Text style={material.subheading}>{row.label}</Text>
+        <Text style={material.subheading}>{row.item.label}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -93,15 +80,18 @@ export default class SinglePickerMaterialDialog extends Component {
         okLabel={this.props.okLabel}
         scrolled={this.props.scrolled}
         onOk={() =>
-          this.props.onOk({
+           this.props.onOk({
             selectedItem: this.state.rows[this.state.selectedIndex],
-          })}
+          })
+		}
         cancelLabel={this.props.cancelLabel}
         onCancel={() => {
           this.props.onCancel();
-        }}
-      >
-        <ListView dataSource={this.state.dataSource} renderRow={this.renderRow} />
+        }}>
+		<FlatList
+			data={this.props.items}
+			extraData={this.state} // to re-render the FlatList
+			renderItem={this.renderItem} />
       </MaterialDialog>
     );
   }
