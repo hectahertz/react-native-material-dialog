@@ -44,7 +44,10 @@ const MaterialDialog = ({
   okLabel,
   cancelLabel,
   children,
-  cancelOnClickOutside
+  cancelOnClickOutside,
+  showThirdButton,
+  onPressThirdButton,
+  thirdButtonLabel,
 }) => (
   <Modal
     animationType={'fade'}
@@ -92,6 +95,20 @@ const MaterialDialog = ({
                       colorAccent={colorAccent}
                       onPress={onCancel}
                       label={cancelLabel}
+                    />
+                    {showThirdButton && (
+                      <ActionButton
+                        testID="dialog-cancel-button"
+                        colorAccent={colorAccent}
+                        onPress={onPressThirdButton}
+                        label={thirdButtonLabel}
+                      />
+                    )}
+                    <ActionButton
+                      testID="dialog-ok-button"
+                      colorAccent={colorAccent}
+                      onPress={onOk}
+                      label={okLabel}
                     />
                     <ActionButton
                       testID="dialog-ok-button"
@@ -200,6 +217,9 @@ MaterialDialog.propTypes = {
   scrolled: PropTypes.bool,
   addPadding: PropTypes.bool,
   cancelOnClickOutside: PropTypes.bool,
+  showThirdButton: PropTypes.bool,
+  onPressThirdButton: PropTypes.func,
+  thirdButtonLabel: PropTypes.string,
 };
 
 MaterialDialog.defaultProps = {
@@ -213,7 +233,10 @@ MaterialDialog.defaultProps = {
   addPadding: true,
   onOk: undefined,
   onCancel: undefined,
-  cancelOnClickOutside: true
+  cancelOnClickOutside: true,
+  showThirdButton: false,
+  onPressThirdButton: undefined,
+  thirdButtonLabel: '',
 };
 
 ActionButton.propTypes = {
