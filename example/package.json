@@ -1,27 +1,23 @@
 {
-  "name": "react-native-material-dialog-example",
-  "version": "0.1.0",
-  "devDependencies": {
-    "jest-expo": "23.0.0",
-    "react-native-scripts": "1.8.1",
-    "react-test-renderer": "16.0.0"
-  },
-  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
+  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "react-native-scripts start",
-    "eject": "react-native-scripts eject",
-    "android": "react-native-scripts android",
-    "ios": "react-native-scripts ios",
-    "test": "node node_modules/jest/bin/jest.js --watch"
-  },
-  "jest": {
-    "preset": "jest-expo"
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject"
   },
   "dependencies": {
-    "expo": "^23.0.4",
-    "react": "16.0.0",
-    "react-native": "0.50.3",
-    "react-native-material-dialog": "^0.7.2",
-    "react-native-typography": "^1.0.3"
-  }
+    "expo": "^35.0.0",
+    "react": "16.8.3",
+    "react-dom": "16.8.3",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
+    "react-native-material-dialog": "^0.7.6",
+    "react-native-status-bar-height": "^2.4.0",
+    "react-native-web": "^0.11.7"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "^7.1.0"
+  },
+  "private": true
 }

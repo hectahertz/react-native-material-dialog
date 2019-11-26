@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
@@ -8,19 +7,20 @@ import {
   TouchableOpacity,
   ScrollView,
   Platform,
-  Image,
-} from 'react-native';
-import { Constants } from 'expo';
+  Image
+} from "react-native";
 import {
   MaterialDialog,
   MultiPickerMaterialDialog,
-  SinglePickerMaterialDialog,
-} from 'react-native-material-dialog';
-import { material } from 'react-native-typography';
+  SinglePickerMaterialDialog
+} from "react-native-material-dialog";
+import { getStatusBarHeight } from "react-native-status-bar-height";
 
-const map = require('./map.jpg');
+import { material } from "react-native-typography";
 
-export default class MaterialDialogExample extends Component {
+const map = require("./map.jpg");
+
+export default class App extends Component {
   state = {
     basicNoActionsVisible: false,
     basicNoTitleVisible: false,
@@ -36,7 +36,7 @@ export default class MaterialDialogExample extends Component {
     singlePickerVisible: false,
     singlePickerSelectedItem: undefined,
     scrolledSinglePickerVisible: false,
-    scrolledSinglePickerSelectedItem: undefined,
+    scrolledSinglePickerSelectedItem: undefined
   };
 
   // TODO Add examples with more complex views
@@ -130,10 +130,10 @@ export default class MaterialDialogExample extends Component {
               </TouchableOpacity>
               <Text numberOfLines={1} style={material.caption}>
                 {this.state.multiPickerSelectedItems.length === 0
-                  ? 'No items selected.'
+                  ? "No items selected."
                   : `Selected: ${this.state.multiPickerSelectedItems
                       .map(item => item.label)
-                      .join(', ')}`}
+                      .join(", ")}`}
               </Text>
 
               <TouchableOpacity
@@ -147,10 +147,10 @@ export default class MaterialDialogExample extends Component {
               </TouchableOpacity>
               <Text numberOfLines={1} style={material.caption}>
                 {this.state.scrolledMultiPickerSelectedItems.length === 0
-                  ? 'No items selected.'
+                  ? "No items selected."
                   : `Selected: ${this.state.scrolledMultiPickerSelectedItems
                       .map(item => item.label)
-                      .join(', ')}`}
+                      .join(", ")}`}
               </Text>
             </View>
             <View style={styles.sectionContainer}>
@@ -165,7 +165,7 @@ export default class MaterialDialogExample extends Component {
               </TouchableOpacity>
               <Text numberOfLines={1} style={material.caption}>
                 {this.state.singlePickerSelectedItem === undefined
-                  ? 'No item selected.'
+                  ? "No item selected."
                   : `Selected: ${this.state.singlePickerSelectedItem.label}`}
               </Text>
 
@@ -180,17 +180,15 @@ export default class MaterialDialogExample extends Component {
               </TouchableOpacity>
               <Text numberOfLines={1} style={material.caption}>
                 {this.state.scrolledSinglePickerSelectedItem === undefined
-                  ? 'No item selected.'
-                  : `Selected: ${
-                      this.state.scrolledSinglePickerSelectedItem.label
-                    }`}
+                  ? "No item selected."
+                  : `Selected: ${this.state.scrolledSinglePickerSelectedItem.label}`}
               </Text>
             </View>
           </View>
         </ScrollView>
 
         <MaterialDialog
-          title={'Information'}
+          title={"Information"}
           visible={this.state.basicNoActionsVisible}
           onCancel={() => {
             this.setState({ basicNoActionsVisible: false });
@@ -245,7 +243,7 @@ export default class MaterialDialogExample extends Component {
 
         <MaterialDialog
           visible={this.state.basicCustomColorsVisible}
-          title={'Save the conversation?'}
+          title={"Save the conversation?"}
           titleColor="#F0F0F0"
           colorAccent="#6ABED0"
           backgroundColor="#181712"
@@ -258,14 +256,14 @@ export default class MaterialDialogExample extends Component {
             this.setState({ basicCustomColorsVisible: false });
           }}
         >
-          <Text style={[material.subheading, { color: '#B0ABA0' }]}>
+          <Text style={[material.subheading, { color: "#B0ABA0" }]}>
             Store the conversation log in Google Drive.
           </Text>
         </MaterialDialog>
 
         <MaterialDialog
           visible={this.state.basicScrolledListVisible}
-          title={'Scrollable list'}
+          title={"Scrollable list"}
           scrolled
           onOk={() => {
             this.setState({ basicScrolledListVisible: false });
@@ -288,7 +286,7 @@ export default class MaterialDialogExample extends Component {
         <MaterialDialog
           visible={this.state.basicMapVisible}
           addPadding={false}
-          title={'Location list'}
+          title={"Location list"}
           onOk={() => {
             this.setState({ basicMapVisible: false });
           }}
@@ -300,7 +298,7 @@ export default class MaterialDialogExample extends Component {
         </MaterialDialog>
 
         <MultiPickerMaterialDialog
-          title={'Pick some elements!'}
+          title={"Pick some elements!"}
           items={SHORT_LIST.map((row, index) => ({ value: index, label: row }))}
           visible={this.state.multiPickerVisible}
           selectedItems={this.state.multiPickerSelectedItems}
@@ -312,7 +310,7 @@ export default class MaterialDialogExample extends Component {
         />
 
         <MultiPickerMaterialDialog
-          title={'Pick some more elements!'}
+          title={"Pick some more elements!"}
           scrolled
           items={LONG_LIST.map((row, index) => ({ value: index, label: row }))}
           visible={this.state.scrolledMultiPickerVisible}
@@ -321,13 +319,13 @@ export default class MaterialDialogExample extends Component {
           onOk={result => {
             this.setState({ scrolledMultiPickerVisible: false });
             this.setState({
-              scrolledMultiPickerSelectedItems: result.selectedItems,
+              scrolledMultiPickerSelectedItems: result.selectedItems
             });
           }}
         />
 
         <SinglePickerMaterialDialog
-          title={'Pick one element!'}
+          title={"Pick one element!"}
           items={SHORT_LIST.map((row, index) => ({ value: index, label: row }))}
           visible={this.state.singlePickerVisible}
           selectedItem={this.state.singlePickerSelectedItem}
@@ -339,7 +337,7 @@ export default class MaterialDialogExample extends Component {
         />
 
         <SinglePickerMaterialDialog
-          title={'Pick one element!'}
+          title={"Pick one element!"}
           scrolled
           items={LONG_LIST.map((row, index) => ({ value: index, label: row }))}
           visible={this.state.scrolledSinglePickerVisible}
@@ -348,7 +346,7 @@ export default class MaterialDialogExample extends Component {
           onOk={result => {
             this.setState({ scrolledSinglePickerVisible: false });
             this.setState({
-              scrolledSinglePickerSelectedItem: result.selectedItem,
+              scrolledSinglePickerSelectedItem: result.selectedItem
             });
           }}
         />
@@ -358,89 +356,87 @@ export default class MaterialDialogExample extends Component {
 }
 
 const LONG_LIST = [
-  'List element 1',
-  'List element 2',
-  'List element 3',
-  'List element 4',
-  'List element 5',
-  'List element 6',
-  'List element 7',
-  'List element 8',
-  'List element 9',
-  'List element 10',
-  'List element 12',
-  'List element 13',
-  'List element 14',
-  'List element 15',
-  'List element 16',
-  'List element 17',
-  'List element 18',
-  'List element 19',
+  "List element 1",
+  "List element 2",
+  "List element 3",
+  "List element 4",
+  "List element 5",
+  "List element 6",
+  "List element 7",
+  "List element 8",
+  "List element 9",
+  "List element 10",
+  "List element 12",
+  "List element 13",
+  "List element 14",
+  "List element 15",
+  "List element 16",
+  "List element 17",
+  "List element 18",
+  "List element 19"
 ];
 
-const SHORT_LIST = ['List element 1', 'List element 2', 'List element 3'];
+const SHORT_LIST = ["List element 1", "List element 2", "List element 3"];
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: "white"
   },
   contentContainer: {
     flex: 1,
-    marginTop: 56,
-    justifyContent: 'flex-start',
-    alignItems: 'stretch',
-    padding: 20,
+    paddingTop: getStatusBarHeight() + 56,
+    justifyContent: "flex-start",
+    alignItems: "stretch",
+    padding: 20
   },
   sectionContainer: {
-    paddingVertical: 16,
+    paddingVertical: 16
   },
   navigationBar: {
-    paddingTop: Constants.statusBarHeight,
-    height: 72,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'absolute',
+    paddingTop: getStatusBarHeight() + 12,
+    paddingBottom: 16,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    position: "absolute",
     left: 0,
     right: 0,
     top: 0,
-    backgroundColor: '#3F51B5',
+    backgroundColor: "#3F51B5",
     ...Platform.select({
       android: {
-        elevation: 4,
+        elevation: 4
       },
       ios: {
-        zIndex: 10,
-      },
-    }),
+        zIndex: 10
+      }
+    })
   },
   button: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     minWidth: 88,
     height: 36,
     borderRadius: 2,
-    backgroundColor: '#E8EAF6',
+    backgroundColor: "#E8EAF6",
     elevation: 2,
     paddingHorizontal: 16,
-    marginTop: 16,
+    marginTop: 16
   },
   scrollViewContainer: {
-    paddingTop: 8,
+    paddingTop: 8
   },
   row: {
     height: 48,
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center"
   },
   mapView: {
     height: 200,
-    width: 280,
-  },
+    width: 280
+  }
 });
-
-AppRegistry.registerComponent('MaterialDialog', () => MaterialDialog);
