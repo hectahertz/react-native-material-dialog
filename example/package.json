@@ -12,7 +12,7 @@
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
-    "react-native-material-dialog": "^0.7.6",
+    "react-native-material-dialog": "^0.7.7",
     "react-native-status-bar-height": "^2.4.0",
     "react-native-web": "^0.11.7"
   },

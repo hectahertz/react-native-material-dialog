@@ -4176,10 +4176,10 @@ react-native-branch@~3.0.1:
   resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-3.0.1.tgz#5b07b61cbd290168cd3c3662e017ebe0f356d2ca"
   integrity sha512-vbcYxPZlpF5f39GAEUF8kuGQqCNeD3E6zEdvtOq8oCGZunHXlWlKgAS6dgBKCvsHvXgHuMtpvs39VgOp8DaKig==
 
-react-native-material-dialog@^0.7.6:
-  version "0.7.6"
-  resolved "https://registry.yarnpkg.com/react-native-material-dialog/-/react-native-material-dialog-0.7.6.tgz#1cf0a454bad045987f8d3980f38fdd36b502d55f"
-  integrity sha512-K5lExew1rl6orpuDaXGV92aVXTahdWTv6RsD5OEuMf3h3iH7Sxgocb3tbRdqqZlw2cVrPl7DemwyT/lZS9jOHg==
+react-native-material-dialog@^0.7.7:
+  version "0.7.7"
+  resolved "https://registry.yarnpkg.com/react-native-material-dialog/-/react-native-material-dialog-0.7.7.tgz#08b9e2144c45b9108ffec9a79b60276913901824"
+  integrity sha512-FdYQpe9tJ1ME44gGjSeUDgIRhJat51ji3r4Og3NTN1LDqZmJ52bEoImdIFAq1aadrpeUQDcurIlo0iz4FS+6og==
   dependencies:
     prop-types "^15.5.10"
     react-native-typography "^1.0.3"
