@@ -64,7 +64,7 @@ const MaterialDialog = ({
             ]}
           >
             <TouchableWithoutFeedback>
-              <View>
+              <View onStartShouldSetResponder={() => scrolled}>
                 {title != null ? (
                   <View style={scrolled ? styles.titleContainerScrolled : styles.titleContainer}>
                     <Text style={[material.title, { color: titleColor }]}>{title}</Text>
