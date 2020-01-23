@@ -52,7 +52,9 @@ export default class SinglePickerMaterialDialog extends Component {
             size={24}
           />
         </View>
-        <Text style={material.subheading}>{item.label}</Text>
+        <Text style={[material.subheading,{
+          width : "80%"
+        }]}>{item.label}</Text>
       </View>
     </TouchableOpacity>
   );
