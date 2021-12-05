@@ -142,6 +142,30 @@ interface SinglePickerMaterialDialogStatic extends Dialog {
   onCancel?(): void;
 }
 
+interface SinglePickerMaterialDialogWithSearchStatic extends Dialog {
+  /**
+   * List of items shown to the user to select from
+   */
+  items: PickerItem[];
+
+  /**
+   * Currently selected item chosen from the items array
+   */
+  selectedItem: PickerItem;
+
+  /**
+   * Callback function fired when the confirm(ok) button is pressed
+   * @param selected
+   */
+  onOk?(selected: SelectedItem): void;
+
+  /**
+   * Callback function fired when the cancel button is pressed
+   * @param selected
+   */
+  onCancel?(): void;
+}
+
 interface MultiPickerMaterialDialogStatic extends Dialog {
   /**
    * List of items shown to the user to select from
@@ -168,8 +192,9 @@ interface MultiPickerMaterialDialogStatic extends Dialog {
 
 export class MaterialDialog extends React.Component<MaterialDialogStatic> {}
 export class SinglePickerMaterialDialog extends React.Component<
-  SinglePickerMaterialDialogStatic
+SinglePickerMaterialDialogStatic
 > {}
-export class MultiPickerMaterialDialog extends React.Component<
-  MultiPickerMaterialDialogStatic
+export class SinglePickerMaterialDialogWithSearch extends React.Component<
+SinglePickerMaterialDialogWithSearchStatic
 > {}
+export class MultiPickerMaterialDialog extends React.Component<MultiPickerMaterialDialogStatic> {}
