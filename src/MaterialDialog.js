@@ -14,7 +14,7 @@ import {
 import colors from './colors';
 import { material } from 'react-native-typography';
 
-const { height } = Dimensions.get('window');
+const { height, width } = Dimensions.get('window');
 
 // TODO: Don't rely on Dimensions for the actions footer layout
 // TODO: Support custom actions
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   modalContainer: {
     marginHorizontal: 16,
     marginVertical: 106,
-    minWidth: 280,
+    minWidth: width - 80,
     borderRadius: 2,
     elevation: 24,
     overflow: 'hidden',
